@@ -14,40 +14,7 @@ const Hero = () => {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const textRevealVariants = {
-    hidden: { y: 100, opacity: 0, scale: 0.8 },
-    visible: { y: 0, opacity: 1, scale: 1 },
-  };
-
-  const floatingVariants = {
-    animate: {
-      y: [0, -20, 0],
-      rotate: [0, 5, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
+ 
 
   const scrollToContent = () => {
     const element = document.getElementById('content');
@@ -67,21 +34,26 @@ const Hero = () => {
         />
         
         {/* Enhanced Fallback Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-petrozin-light-grey/80 to-white/90">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-            style={{ backgroundImage: "url('/images/hero-workforce.jpg')" }}
-          />
+        <div className="absolute inset-0">
+          {/* Video Background */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/videos/petrozinbanner.mp4" type="video/mp4" />
+            {/* Fallback to image if video fails */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: "url('/images/hero-workforce.jpg')" }}
+            />
+          </video>
         </div>
         
         {/* Clean gradient overlays for better logo visibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent"></div>
-        
-        {/* Subtle geometric elements for modern touch */}
-        <div className="absolute top-20 right-20 w-32 h-32 border border-petrozin-orange/20 rounded-full opacity-40"></div>
-        <div className="absolute bottom-20 left-20 w-24 h-24 border border-petrozin-red/20 rounded-full opacity-40"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-16 h-16 border border-petrozin-orange/20 rotate-45 opacity-30"></div>
+      
       </div>
 
       {/* Layered Background with Parallax */}
@@ -90,10 +62,10 @@ const Hero = () => {
         style={{ y }}
       >
         {/* Sky Layer */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/20 via-blue-100/20 to-blue-200/20"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-blue-50/20 via-blue-100/20 to-blue-200/20"></div> */}
         
         {/* Corporate Skyline Layer */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-200/20 via-gray-300/20 to-gray-400/20">
+        <div className="absolute inset-0">
           {/* Abstract corporate buildings with floating animation */}
           <motion.div 
             className="absolute bottom-1/2 left-10 w-16 h-32 bg-gray-500/20 rounded-t-lg"
@@ -194,28 +166,28 @@ const Hero = () => {
         >
           {/* Main Headline with Funky Style */}
           <motion.h1 
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-poppins font-black text-petrozin-dark-grey mb-4 leading-none tracking-tight"
+            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-poppins font-black text-white mb-4 leading-none tracking-tight drop-shadow-2xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-petrozin-orange via-petrozin-dark-grey to-petrozin-red">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-petrozin-orange via-white to-petrozin-red drop-shadow-2xl">
               WORKFORCE
             </span>
-            <span className="block text-petrozin-dark-grey mt-2">
+            <span className="block text-white mt-2 drop-shadow-2xl">
               SOLUTIONS
             </span>
           </motion.h1>
 
           {/* Funky Subtitle */}
           <motion.p
-            className="text-xl sm:text-2xl lg:text-3xl text-petrozin-dark-grey font-inter font-light max-w-3xl mx-auto leading-relaxed"
+            className="text-xl sm:text-2xl lg:text-3xl text-white font-inter font-light max-w-3xl mx-auto leading-relaxed drop-shadow-xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            <span className="text-petrozin-orange font-semibold">Connecting</span> exceptional talent with{' '}
-            <span className="text-petrozin-red font-semibold">extraordinary</span> opportunities
+            <span className="text-petrozin-orange font-semibold drop-shadow-xl">Connecting</span> exceptional talent with{' '}
+            <span className="text-petrozin-red font-semibold drop-shadow-xl">extraordinary</span> opportunities
           </motion.p>
         </motion.div>
 
