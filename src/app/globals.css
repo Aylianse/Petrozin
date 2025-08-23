@@ -1,26 +1,148 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Business Card Color Palette */
+    --petrozin-dark-grey: 51 51 51;      /* #333333 - Primary text color */
+    --petrozin-orange: 255 140 0;        /* #FF8C00 - Accent color 1 */
+    --petrozin-red: 220 53 69;           /* #DC3545 - Accent color 2 */
+    --petrozin-white: 255 255 255;       /* #FFFFFF - Clean background */
+    --petrozin-light-grey: 245 245 245;  /* #F5F5F5 - Light backgrounds */
+    --petrozin-medium-grey: 128 128 128; /* #808080 - Secondary text */
+    
+    /* Legacy colors for backward compatibility */
+    --petrozin-navy: 15 23 42;           /* #0F172A - Keep for existing components */
+    --petrozin-gold: 245 158 11;         /* #F59E0B - Keep for existing components */
+    --petrozin-sky: 14 165 233;          /* #0EA5E9 - Keep for existing components */
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: rgb(var(--petrozin-dark-grey));
+    background-color: rgb(var(--petrozin-white));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-petrozin-gold to-petrozin-sky bg-clip-text text-transparent;
+  }
+  
+  .bg-gradient-petrozin {
+    @apply bg-gradient-to-br from-petrozin-navy via-petrozin-navy/90 to-petrozin-navy/80;
+  }
+  
+  .btn-primary {
+    @apply bg-petrozin-gold text-petrozin-navy font-semibold px-6 py-3 rounded-lg hover:bg-petrozin-gold/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-petrozin-gold text-petrozin-gold font-semibold px-6 py-3 rounded-lg hover:bg-petrozin-gold hover:text-petrozin-navy transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 transform hover:scale-105 hover:shadow-2xl;
+  }
+  
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  /* Enhanced Button Styles */
+  .btn-modern {
+    @apply font-poppins font-bold px-8 py-4 rounded-2xl transition-all duration-500 transform hover:scale-105 hover:shadow-2xl shadow-xl;
+  }
+  
+  .btn-modern-primary {
+    @apply bg-gradient-to-r from-petrozin-gold to-petrozin-gold/90 text-petrozin-navy hover:from-petrozin-gold hover:to-petrozin-gold/90 border-2 border-transparent hover:border-petrozin-gold/30;
+  }
+  
+  .btn-modern-secondary {
+    @apply border-3 border-petrozin-gold text-petrozin-gold hover:bg-petrozin-gold hover:text-petrozin-navy bg-transparent backdrop-blur-sm;
+  }
+  
+  /* Enhanced Card Styles */
+  .card-modern {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300;
+  }
+  
+  /* Enhanced Text Styles */
+  .text-hero {
+    @apply font-poppins font-black leading-tight;
+  }
+  
+  .text-display {
+    @apply font-poppins font-black text-5xl sm:text-6xl lg:text-8xl xl:text-9xl;
+  }
+  
+  .text-display-medium {
+    @apply font-poppins font-bold text-4xl sm:text-5xl lg:text-7xl xl:text-8xl;
+  }
+  
+  .text-display-small {
+    @apply font-poppins font-bold text-3xl sm:text-4xl lg:text-6xl xl:text-7xl;
+  }
+  
+  .text-body-large {
+    @apply font-inter font-medium text-xl sm:text-2xl lg:text-3xl;
+  }
+  
+  .text-body-medium {
+    @apply font-inter font-medium text-lg sm:text-xl lg:text-2xl;
+  }
+  
+  .text-caption {
+    @apply font-inter text-sm text-gray-500 uppercase tracking-wider;
+  }
 }
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .border-3 {
+    border-width: 3px;
+  }
+  
+  .backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+  }
+  
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(40px);
+  }
+} 
