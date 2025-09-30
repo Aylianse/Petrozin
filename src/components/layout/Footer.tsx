@@ -12,6 +12,7 @@ const Footer = () => {
     company: [
       { name: 'About Us', href: '/about' },
       { name: 'Our Services', href: '/services' },
+      { name: 'Vendor Registration', href: '/vendor-registration' },
       { name: 'Contact', href: '/contact' },
     ],
     services: [
@@ -76,15 +77,19 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-sm text-gray-300">
                 <Phone size={16} />
-                <span>+1 (555) 123-4567</span>
+                <span>Landline: +97444512393</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-gray-300">
+                <Phone size={16} />
+                <span>WhatsApp: +97470820576</span>
               </div>
               <div className="flex items-center space-x-2 text-sm text-gray-300">
                 <Mail size={16} />
-                <span>info@petrozin.com</span>
+                <span>admin@petrozin.com</span>
               </div>
               <div className="flex items-center space-x-2 text-sm text-gray-300">
                 <MapPin size={16} />
-                <span>123 Business District, Suite 100</span>
+                <span>P.O. Box 18914, 5th Floor, Office 502, Above Al Anees Store, Near Al Jadeeda Metro Station, Umm Ghuwailina, Doha, Qatar</span>
               </div>
             </div>
           </motion.div>

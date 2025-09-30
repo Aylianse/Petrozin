@@ -28,19 +28,18 @@ const ContactForm = () => {
     setSubmitStatus('idle');
 
     try {
-      // Simulate API call - replace with actual API endpoint
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // For demo purposes, always show success
+      const body = encodeURIComponent(
+        `New Website Inquiry\n\n` +
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        `Company: ${formData.company}\n` +
+        `Phone: ${formData.phone}\n` +
+        `Service: ${formData.service}\n` +
+        `Message: ${formData.message}\n`
+      );
+      window.location.href = `mailto:admin@petrozin.com?subject=Website%20Contact%20Inquiry&body=${body}`;
       setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        service: '',
-        message: '',
-      });
+      setFormData({ name: '', email: '', company: '', phone: '', service: '', message: '' });
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -80,6 +79,14 @@ const ContactForm = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
+            <div className="mb-6 text-center text-gray-700">
+              <p>
+                Prefer direct contact? Call Landline: <span className="font-semibold">+97444512393</span> or WhatsApp: <span className="font-semibold">+97470820576</span>.
+              </p>
+              <p>
+                Email us at <a href="mailto:admin@petrozin.com" className="text-petrozin-gold font-medium">admin@petrozin.com</a>.
+              </p>
+            </div>
             {/* Success/Error Messages */}
             {submitStatus === 'success' && (
               <motion.div
@@ -171,7 +178,7 @@ const ContactForm = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-petrozin-gold focus:border-transparent transition-all duration-300"
-                    placeholder="Enter your phone number"
+                    placeholder="e.g., +97444512393 or +97470820576"
                   />
                 </div>
               </div>

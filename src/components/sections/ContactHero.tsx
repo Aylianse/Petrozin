@@ -24,7 +24,7 @@ const ContactHero = () => {
     {
       icon: Phone,
       title: 'Call Us',
-      value: '+1 (555) 123-4567',
+      value: '+97444512393',
       color: 'from-petrozin-gold to-petrozin-gold/80',
     },
     {

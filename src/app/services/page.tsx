@@ -5,6 +5,8 @@ import ServicesHero from '@/components/sections/ServicesHero';
 import ServicesDetails from '@/components/sections/ServicesDetails';
 import IndustrySpecializations from '@/components/sections/IndustrySpecializations';
 import CTABanner from '@/components/sections/CTABanner';
+import LicensesCertifications from '@/components/sections/LicensesCertifications';
+import ClientList from '@/components/sections/ClientList';
 
 export const metadata: Metadata = {
   title: 'Our Services - Manpower Supply, Project Support & Technical Expertise',
@@ -27,6 +29,8 @@ export default function ServicesPage() {
       <Header />
       <ServicesHero />
       <ServicesDetails />
+      <LicensesCertifications />
+      <ClientList />
       <IndustrySpecializations />
       <CTABanner />
       <Footer />

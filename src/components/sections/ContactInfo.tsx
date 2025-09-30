@@ -24,24 +24,24 @@ const ContactInfo = () => {
     {
       icon: Phone,
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      secondary: '+1 (555) 123-4568',
+      value: '+97444512393',
+      secondary: 'WhatsApp: +97470820576',
       color: 'from-petrozin-gold to-petrozin-gold/80',
       bgColor: 'bg-petrozin-gold/5',
     },
     {
       icon: Mail,
       title: 'Email',
-      value: 'info@petrozin.com',
-      secondary: 'support@petrozin.com',
+      value: 'admin@petrozin.com',
+      secondary: 'For general inquiries',
       color: 'from-petrozin-sky to-petrozin-sky/80',
       bgColor: 'bg-petrozin-sky/5',
     },
     {
       icon: MapPin,
       title: 'Office',
-      value: '123 Business District, Suite 100',
-      secondary: 'New York, NY 10001, USA',
+      value: 'P.O. Box 18914, 5th Floor, Office 502',
+      secondary: 'Above Al Anees Store, Near Al Jadeeda Metro Station, Umm Ghuwailina, Doha, Qatar',
       color: 'from-petrozin-gold to-petrozin-sky',
       bgColor: 'bg-gradient-to-br from-petrozin-gold/5 to-petrozin-sky/5',
     },
@@ -51,20 +51,20 @@ const ContactInfo = () => {
     {
       icon: Clock,
       title: 'Business Hours',
-      value: 'Monday - Friday: 8:00 AM - 6:00 PM EST',
-      secondary: 'Saturday: 9:00 AM - 1:00 PM EST',
+      value: 'Sunday - Thursday: 8:00 AM - 6:00 PM',
+      secondary: 'Saturday: 9:00 AM - 1:00 PM | Friday: Closed',
     },
     {
       icon: Globe,
       title: 'Global Operations',
-      value: '24/7 Support Available',
-      secondary: 'Emergency Contact: +1 (555) 123-4569',
+      value: 'Support available 24/7',
+      secondary: 'Emergency: +97470820576',
     },
     {
       icon: Users,
       title: 'Response Time',
       value: 'Within 24 hours',
-      secondary: 'Urgent requests: Within 4 hours',
+      secondary: 'Urgent: Within 4 hours',
     },
   ];
 
@@ -184,12 +184,17 @@ const ContactInfo = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center space-x-3">
                 <Phone className="text-petrozin-gold" size={24} />
-                <span className="text-xl font-semibold">+1 (555) 123-4569</span>
+                <span className="text-xl font-semibold">+97470820576</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="text-petrozin-gold" size={24} />
-                <span className="text-xl font-semibold">emergency@petrozin.com</span>
+                <span className="text-xl font-semibold">admin@petrozin.com</span>
               </div>
+            </div>
+            <div className="mt-6">
+              <a href="/vendor-registration" className="inline-block bg-white text-petrozin-navy font-semibold px-5 py-3 rounded-xl hover:bg-white/90">
+                Vendor Registration Form
+              </a>
             </div>
           </div>
         </motion.div>

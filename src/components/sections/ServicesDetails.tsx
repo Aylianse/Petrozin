@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, Briefcase, Wrench, CheckCircle, Globe, Clock, Award, Shield } from 'lucide-react';
+import { Users, Briefcase, Wrench, CheckCircle, Globe, Clock, Award, Shield, UserCheck } from 'lucide-react';
 
 const ServicesDetails = () => {
   const containerVariants = {
@@ -25,18 +25,35 @@ const ServicesDetails = () => {
       id: 'manpower',
       icon: Users,
       title: 'Manpower Supply',
-      subtitle: 'Skilled Professionals for Every Industry',
-      description: 'Our comprehensive manpower supply service connects you with highly qualified professionals who are perfectly matched to your specific requirements and industry standards.',
+      subtitle: 'White & Blue Collar Workforce',
+      description: 'End-to-end manpower supply for white collar and blue collar roles across industries—screened, compliant, and deployment-ready.',
       features: [
-        'Extensive sourcing channels and networks',
+        'White collar: Engineers, Supervisors, Coordinators, Admin',
+        'Blue collar: Technicians, Welders, Fabricators, Helpers',
         'Rigorous compliance and background checks',
         'Industry-specific qualification verification',
-        'Reliable and timely placement',
-        'Ongoing performance monitoring',
-        'Flexible contract terms and conditions'
+        'Reliable and timely mobilization',
+        'Flexible short/long-term contracts'
       ],
       color: 'from-petrozin-gold to-petrozin-gold/80',
       bgColor: 'bg-petrozin-gold/5',
+    },
+    {
+      id: 'recruitment',
+      icon: UserCheck,
+      title: 'Recruitment Services',
+      subtitle: 'Sourcing, Screening & Onboarding',
+      description: 'Comprehensive recruitment solutions from role scoping and talent sourcing to interviews, shortlisting, and onboarding.',
+      features: [
+        'Targeted sourcing across local and global markets',
+        'Structured interviews and technical assessments',
+        'Credentialing and reference verification',
+        'Offer management and onboarding support',
+        'Scalable hiring for project ramps',
+        'Ongoing candidate care and retention'
+      ],
+      color: 'from-petrozin-sky to-petrozin-sky/80',
+      bgColor: 'bg-petrozin-sky/5',
     },
     {
       id: 'project-support',
@@ -93,6 +110,17 @@ const ServicesDetails = () => {
             We deliver comprehensive workforce solutions that address every aspect of your industrial manpower needs, 
             ensuring quality, reliability, and efficiency in every project.
           </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <span className="inline-flex items-center gap-2 text-sm px-3 py-1 rounded-full bg-petrozin-gray text-petrozin-navy border border-gray-200">
+              <Shield size={16} /> ICV Certificates
+            </span>
+            <span className="inline-flex items-center gap-2 text-sm px-3 py-1 rounded-full bg-petrozin-gray text-petrozin-navy border border-gray-200">
+              <Award size={16} /> ISO Certificates
+            </span>
+            <span className="inline-flex items-center gap-2 text-sm px-3 py-1 rounded-full bg-petrozin-gold/20 text-petrozin-navy border border-petrozin-gold/40 font-semibold">
+              <Shield size={16} /> Manpower Supply License (Rare Advantage)
+            </span>
+          </div>
         </motion.div>
 
         {/* Services Grid */}

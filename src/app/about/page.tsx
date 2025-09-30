@@ -5,7 +5,6 @@ import AboutHero from '@/components/sections/AboutHero';
 import VisionMission from '@/components/sections/VisionMission';
 import CompanyValues from '@/components/sections/CompanyValues';
 import CompanyTimeline from '@/components/sections/CompanyTimeline';
-import TeamSection from '@/components/sections/TeamSection';
 import CTABanner from '@/components/sections/CTABanner';
 
 export const metadata: Metadata = {
@@ -30,7 +29,6 @@ export default function AboutPage() {
       <VisionMission />
       <CompanyValues />
       <CompanyTimeline />
-      <TeamSection />
       <CTABanner />
       <Footer />
     </main>

@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import { ChevronDown, ArrowRight, Users, Globe, Shield, Sparkles, Zap } from 'lucide-react';
+import { ChevronDown, ArrowRight, Users, Globe, Shield, Zap } from 'lucide-react';
 import { useRef } from 'react';
 import AnimatedBackground from '../ui/AnimatedBackground';
 

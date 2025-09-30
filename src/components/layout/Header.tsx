@@ -4,12 +4,14 @@ import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown, Sparkles, Zap } from 'lucide-react';
+import { Menu, X, ChevronDown, Zap } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
+  const pathname = usePathname();
   
   const headerOpacity = useTransform(scrollY, [0, 100], [1, 0.95]);
   const headerBlur = useTransform(scrollY, [0, 100], [0, 10]);
@@ -32,6 +34,11 @@ const Header = () => {
     { name: 'Services', href: '/services', hasDropdown: true },
     { name: 'Contact', href: '/contact', hasDropdown: false },
   ];
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname?.startsWith(href);
+  };
 
   return (
     <motion.header
@@ -83,9 +90,13 @@ const Header = () => {
                 transition={{ delay: index * 0.1 + 0.4, duration: 0.6 }}
                 className="relative group"
               >
-                <Link href={item.href}>
+                <Link href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
                   <motion.span
-                    className="text-base font-poppins font-semibold text-petrozin-dark-grey hover:text-petrozin-orange transition-colors duration-300 cursor-pointer flex items-center space-x-1"
+                    className={`text-base font-poppins font-semibold transition-colors duration-300 cursor-pointer flex items-center space-x-1 ${
+                      isActive(item.href)
+                        ? 'text-petrozin-orange'
+                        : 'text-petrozin-dark-grey hover:text-petrozin-orange'
+                    }`}
                     whileHover={{ y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -101,12 +112,11 @@ const Header = () => {
                     )}
                   </motion.span>
                 </Link>
-                
-                {/* Hover Underline Effect */}
-                <motion.div
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-petrozin-orange to-petrozin-red rounded-full"
-                  whileHover={{ width: '100%' }}
-                  transition={{ duration: 0.3 }}
+                {/* Active underline */}
+                <div
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-petrozin-orange to-petrozin-red rounded-full transition-all duration-300 ${
+                    isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
                 />
               </motion.div>
             ))}
@@ -174,7 +184,10 @@ const Header = () => {
                 <Link 
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="block text-lg font-poppins font-semibold text-petrozin-dark-grey hover:text-petrozin-orange transition-colors duration-300 py-2"
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  className={`block text-lg font-poppins font-semibold transition-colors duration-300 py-2 ${
+                    isActive(item.href) ? 'text-petrozin-orange' : 'text-petrozin-dark-grey hover:text-petrozin-orange'
+                  }`}
                 >
                   {item.name}
                 </Link>

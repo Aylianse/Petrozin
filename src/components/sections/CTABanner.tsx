@@ -88,7 +88,7 @@ const CTABanner = () => {
               </div>
               <div className="text-left">
                 <p className="text-sm text-gray-300">Call Us</p>
-                <p className="font-semibold">+1 (555) 123-4567</p>
+                <p className="font-semibold">+97444512393</p>
               </div>
             </div>
 
@@ -98,7 +98,7 @@ const CTABanner = () => {
               </div>
               <div className="text-left">
                 <p className="text-sm text-gray-300">Email Us</p>
-                <p className="font-semibold">info@petrozin.com</p>
+                <p className="font-semibold">admin@petrozin.com</p>
               </div>
             </div>
           </motion.div>
