@@ -20,11 +20,6 @@ const OurPromise = () => {
     visible: { opacity: 1, x: 0 },
   };
 
-  const rightItemVariants = {
-    hidden: { opacity: 0, x: 30 },
-    visible: { opacity: 1, x: 0 },
-  };
-
   const promises = [
     {
       icon: CheckCircle,
@@ -47,7 +42,7 @@ const OurPromise = () => {
     <section className="section-padding bg-white">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Side - Image */}
+          {/* Left Side - Interactive Visual */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: -50 }}
@@ -56,36 +51,99 @@ const OurPromise = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="relative">
-              {/* Main Image Container */}
-              <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-petrozin-navy to-petrozin-navy/80 relative">
-                {/* Placeholder for actual image */}
-                <div className="absolute inset-0 bg-[url('/promise-image.jpg')] bg-cover bg-center bg-no-repeat opacity-60"></div>
+              {/* Main Interactive Container */}
+              <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-petrozin-navy via-petrozin-navy/95 to-petrozin-navy/90 relative p-8 flex items-center justify-center">
                 
-                {/* Overlay Elements */}
-                <div className="absolute inset-0 bg-gradient-to-t from-petrozin-navy via-transparent to-transparent"></div>
+                {/* Animated Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-0 left-0 w-full h-full" style={{
+                    backgroundImage: 'radial-gradient(circle, rgba(230,126,34,0.3) 1px, transparent 1px)',
+                    backgroundSize: '50px 50px'
+                  }}></div>
+                </div>
                 
-                {/* Floating Elements */}
+                {/* Central Focus Area */}
+                <div className="relative z-10 text-center">
+                  <motion.div
+                    className="mb-8"
+                    animate={{
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  >
+                    <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-petrozin-gold to-petrozin-orange rounded-full flex items-center justify-center shadow-2xl">
+                      <CheckCircle size={64} className="text-white" />
+                    </div>
+                    <h3 className="text-white text-2xl font-bold mb-2">Quality Guaranteed</h3>
+                    <p className="text-gray-300 text-sm">Every hire, every time</p>
+                  </motion.div>
+
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-2 gap-4 mt-8">
+                    <motion.div
+                      className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="text-3xl font-bold text-petrozin-gold mb-1">98%</div>
+                      <div className="text-xs text-gray-300">Client Satisfaction</div>
+                    </motion.div>
+                    <motion.div
+                      className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="text-3xl font-bold text-petrozin-gold mb-1">500+</div>
+                      <div className="text-xs text-gray-300">Staff Deployed</div>
+                    </motion.div>
+                  </div>
+                </div>
+                
+                {/* Floating Animated Elements */}
                 <motion.div
-                  className="absolute top-8 right-8 w-16 h-16 bg-petrozin-gold/20 rounded-full backdrop-blur-sm border border-petrozin-gold/30"
+                  className="absolute top-12 right-12 w-20 h-20 bg-petrozin-gold/20 rounded-full backdrop-blur-sm border border-petrozin-gold/30 flex items-center justify-center"
                   animate={{
-                    scale: [1, 1.1, 1],
+                    y: [0, -20, 0],
                     rotate: [0, 5, 0],
                   }}
                   transition={{ duration: 4, repeat: Infinity }}
-                />
+                >
+                  <Star size={32} className="text-petrozin-gold" />
+                </motion.div>
+                
                 <motion.div
-                  className="absolute bottom-8 left-8 w-12 h-12 bg-petrozin-sky/20 rounded-full backdrop-blur-sm border border-petrozin-sky/30"
+                  className="absolute bottom-12 left-12 w-16 h-16 bg-petrozin-orange/20 rounded-full backdrop-blur-sm border border-petrozin-orange/30 flex items-center justify-center"
                   animate={{
-                    scale: [1, 1.2, 1],
+                    y: [0, 20, 0],
                     rotate: [0, -5, 0],
                   }}
                   transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+                >
+                  <Award size={28} className="text-petrozin-orange" />
+                </motion.div>
+
+                {/* Corner Decorations */}
+                <motion.div
+                  className="absolute top-6 left-6 w-3 h-3 bg-petrozin-gold rounded-full"
+                  animate={{
+                    opacity: [0.3, 1, 0.3],
+                    scale: [1, 1.5, 1],
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <motion.div
+                  className="absolute bottom-6 right-6 w-3 h-3 bg-petrozin-orange rounded-full"
+                  animate={{
+                    opacity: [0.3, 1, 0.3],
+                    scale: [1, 1.5, 1],
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 1 }}
                 />
               </div>
 
-              {/* Decorative Elements */}
+              {/* Outer Decorative Elements */}
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-petrozin-gold/10 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-petrozin-sky/10 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-petrozin-orange/10 rounded-full blur-xl"></div>
             </div>
           </motion.div>
 

@@ -7,6 +7,7 @@ import IndustrySpecializations from '@/components/sections/IndustrySpecializatio
 import CTABanner from '@/components/sections/CTABanner';
 import LicensesCertifications from '@/components/sections/LicensesCertifications';
 import ClientList from '@/components/sections/ClientList';
+import GlobalOperations from '@/components/sections/GlobalOperations';
 
 export const metadata: Metadata = {
   title: 'Our Services - Manpower Supply, Project Support & Technical Expertise',
@@ -30,6 +31,7 @@ export default function ServicesPage() {
       <ServicesHero />
       <ServicesDetails />
       <LicensesCertifications />
+      <GlobalOperations />
       <ClientList />
       <IndustrySpecializations />
       <CTABanner />

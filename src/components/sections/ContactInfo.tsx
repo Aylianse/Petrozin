@@ -40,8 +40,8 @@ const ContactInfo = () => {
     {
       icon: MapPin,
       title: 'Office',
-      value: 'P.O. Box 18914, 5th Floor, Office 502',
-      secondary: 'Above Al Anees Store, Near Al Jadeeda Metro Station, Umm Ghuwailina, Doha, Qatar',
+      value: 'BIN SHEIKH BUILDING, 5th Floor, Office 502',
+      secondary: 'Above Al Anees Store, Near Al Jadeeda Metro Station, Doha, Qatar',
       color: 'from-petrozin-gold to-petrozin-sky',
       bgColor: 'bg-gradient-to-br from-petrozin-gold/5 to-petrozin-sky/5',
     },
@@ -51,20 +51,20 @@ const ContactInfo = () => {
     {
       icon: Clock,
       title: 'Business Hours',
-      value: 'Sunday - Thursday: 8:00 AM - 6:00 PM',
-      secondary: 'Saturday: 9:00 AM - 1:00 PM | Friday: Closed',
+      value: 'Monday - Thursday: 8:00 AM - 5:00 PM',
+      secondary: 'Saturday: 8:00 AM - 12:00 PM | Friday: Closed',
     },
     {
       icon: Globe,
-      title: 'Global Operations',
-      value: 'Support available 24/7',
-      secondary: 'Emergency: +97470820576',
+      title: 'Public Transportation',
+      value: 'Near Al Jadeeda Metro Station & Bus Station',
+      secondary: 'Core center of Doha - Easy to reach',
     },
     {
       icon: Users,
       title: 'Response Time',
-      value: 'Within 24 hours',
-      secondary: 'Urgent: Within 4 hours',
+      value: 'Within 10 minutes',
+      secondary: 'Our team responds to urgent messages quickly',
     },
   ];
 

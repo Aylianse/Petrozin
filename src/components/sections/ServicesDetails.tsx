@@ -188,17 +188,17 @@ const ServicesDetails = () => {
 
                   {/* Service Highlights */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
-                    <div className="text-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-                      <Globe className="w-8 h-8 text-petrozin-sky mx-auto mb-2" />
-                      <p className="text-sm font-medium text-gray-700">Global Reach</p>
+                    <div className="text-center p-4 bg-white rounded-lg shadow-md border-2 border-petrozin-gold/20 hover:border-petrozin-gold transition-all">
+                      <Globe className="w-8 h-8 text-petrozin-gold mx-auto mb-2" />
+                      <p className="text-sm font-semibold text-petrozin-navy">Qatar, UAE & Oman</p>
                     </div>
-                    <div className="text-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
+                    <div className="text-center p-4 bg-white rounded-lg shadow-md border-2 border-petrozin-gold/20 hover:border-petrozin-gold transition-all">
                       <Clock className="w-8 h-8 text-petrozin-gold mx-auto mb-2" />
-                      <p className="text-sm font-medium text-gray-700">24/7 Support</p>
+                      <p className="text-sm font-semibold text-petrozin-navy">10 Min Response</p>
                     </div>
-                    <div className="text-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-                      <Award className="w-8 h-8 text-petrozin-sky mx-auto mb-2" />
-                      <p className="text-sm font-medium text-gray-700">Certified Quality</p>
+                    <div className="text-center p-4 bg-white rounded-lg shadow-md border-2 border-petrozin-gold/20 hover:border-petrozin-gold transition-all">
+                      <Award className="w-8 h-8 text-petrozin-gold mx-auto mb-2" />
+                      <p className="text-sm font-semibold text-petrozin-navy">Licensed & Certified</p>
                     </div>
                   </div>
                 </motion.div>

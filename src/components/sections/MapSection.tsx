@@ -36,8 +36,8 @@ const MapSection = () => {
             <span className="text-gradient">Office</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Located in the heart of the business district, our office is easily accessible 
-            and ready to welcome you for in-person consultations.
+            Located in the core center of Doha, near Al Jadeeda Metro Station. Our office is easily accessible 
+            via public transportation and ready to welcome you for in-person consultations.
           </p>
         </motion.div>
 
@@ -54,41 +54,34 @@ const MapSection = () => {
               className="bg-petrozin-gray rounded-3xl p-8 border-2 border-gray-100 shadow-lg"
               variants={itemVariants}
             >
-              <div className="aspect-video bg-gradient-to-br from-petrozin-navy to-petrozin-sky rounded-2xl overflow-hidden relative">
-                {/* Placeholder for Google Maps - Replace with actual embed */}
-                <div className="absolute inset-0 bg-[url('/office-map.jpg')] bg-cover bg-center bg-no-repeat opacity-60"></div>
-                
-                {/* Map Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-petrozin-navy via-transparent to-transparent"></div>
-                
-                {/* Location Pin */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-16 h-16 bg-petrozin-gold rounded-full flex items-center justify-center shadow-lg border-4 border-white">
-                    <MapPin className="text-petrozin-navy" size={24} />
-                  </div>
-                </div>
-
-                {/* Map Controls */}
-                <div className="absolute bottom-4 right-4 flex space-x-2">
-                  <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-white transition-colors duration-300">
-                    <Navigation className="text-petrozin-navy" size={20} />
-                  </button>
-                </div>
+              <div className="aspect-video rounded-2xl overflow-hidden relative">
+                {/* Google Maps Embed */}
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.8!2d51.531!3d25.2854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDE3JzA3LjQiTiA1McKwMzEnNTIuOCJF!5e0!3m2!1sen!2sqa!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
+                  title="Petrozin Office Location"
+                ></iframe>
               </div>
 
               {/* Map Info */}
               <div className="mt-6 space-y-3">
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-petrozin-gold" />
-                  <span className="text-gray-700">123 Business District, Suite 100, New York, NY 10001</span>
+                <div className="flex items-start space-x-3">
+                  <MapPin className="w-5 h-5 text-petrozin-gold mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">BIN SHEIKH BUILDING, 5th Floor, Office 502, Above Al Anees Store, Near Al Jadeeda Metro Station, Doha, Qatar</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Clock className="w-5 h-5 text-petrozin-sky" />
-                  <span className="text-gray-700">Open Mon-Fri: 8AM-6PM EST</span>
+                  <Clock className="w-5 h-5 text-petrozin-sky flex-shrink-0" />
+                  <span className="text-gray-700">Mon-Thu: 8AM-5PM | Sat: 8AM-12PM | Fri: Closed</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-petrozin-gold" />
-                  <span className="text-gray-700">+1 (555) 123-4567</span>
+                  <Phone className="w-5 h-5 text-petrozin-gold flex-shrink-0" />
+                  <span className="text-gray-700">+97444512393 | WhatsApp: +97470820576</span>
                 </div>
               </div>
             </motion.div>
@@ -111,8 +104,8 @@ const MapSection = () => {
                 Office Location & Details
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Our centrally located office provides easy access for clients and partners. 
-                We offer comfortable meeting spaces and modern facilities for consultations and presentations.
+                Our centrally located office in BIN SHEIKH BUILDING provides easy access for clients and partners. 
+                Located above Al Anees Store and just steps from Al Jadeeda Metro Station, we're in the core center of Doha.
               </p>
             </motion.div>
 
@@ -154,15 +147,17 @@ const MapSection = () => {
                 <div className="bg-petrozin-gray/50 rounded-xl p-4">
                   <h5 className="font-semibold text-petrozin-navy mb-2">Public Transportation</h5>
                   <p className="text-gray-600 text-sm">
-                    Subway: A, C, E trains to 42nd Street-Port Authority Bus Terminal<br />
-                    Bus: M42, M104, M11 routes
+                    <strong>Al Jadeeda Metro Station</strong> - 2 minutes walk<br />
+                    <strong>Bus Station</strong> - Adjacent to metro<br />
+                    Easy access from all parts of Doha
                   </p>
                 </div>
                 <div className="bg-petrozin-gray/50 rounded-xl p-4">
-                  <h5 className="font-semibold text-petrozin-navy mb-2">Parking</h5>
+                  <h5 className="font-semibold text-petrozin-navy mb-2">Location Advantages</h5>
                   <p className="text-gray-600 text-sm">
-                    Street parking available (metered)<br />
-                    Nearby parking garages with hourly rates
+                    ✓ Core center of Doha<br />
+                    ✓ Above Al Anees Store (landmark)<br />
+                    ✓ Excellent public transport connectivity
                   </p>
                 </div>
               </div>

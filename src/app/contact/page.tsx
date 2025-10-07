@@ -3,7 +3,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ContactHero from '@/components/sections/ContactHero';
 import ContactForm from '@/components/sections/ContactForm';
-import ContactInfo from '@/components/sections/ContactInfo';
 import MapSection from '@/components/sections/MapSection';
 
 export const metadata: Metadata = {
@@ -24,7 +23,6 @@ export default function ContactPage() {
       <Header />
       <ContactHero />
       <ContactForm />
-      <ContactInfo />
       <MapSection />
       <Footer />
     </main>

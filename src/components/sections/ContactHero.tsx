@@ -24,25 +24,29 @@ const ContactHero = () => {
     {
       icon: Phone,
       title: 'Call Us',
-      value: '+97444512393',
+      value: 'Landline: +97444512393',
+      secondary: 'WhatsApp: +97470820576',
       color: 'from-petrozin-gold to-petrozin-gold/80',
     },
     {
       icon: Mail,
       title: 'Email Us',
-      value: 'info@petrozin.com',
+      value: 'admin@petrozin.com',
+      secondary: 'Quick response guaranteed',
       color: 'from-petrozin-sky to-petrozin-sky/80',
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      value: '123 Business District, Suite 100',
+      value: 'BIN SHEIKH BUILDING',
+      secondary: '5th Floor, Office 502, Doha',
       color: 'from-petrozin-gold to-petrozin-sky',
     },
     {
       icon: Clock,
       title: 'Business Hours',
-      value: 'Mon-Fri: 8AM-6PM EST',
+      value: 'Mon-Thu: 8AM-5PM',
+      secondary: 'Sat: 8AM-12PM | Fri: Closed',
       color: 'from-petrozin-sky to-petrozin-gold',
     },
   ];
@@ -100,9 +104,14 @@ const ContactHero = () => {
                 <h3 className="text-lg font-poppins font-semibold text-white mb-2">
                   {method.title}
                 </h3>
-                <p className="text-gray-200 text-sm">
+                <p className="text-gray-200 text-sm font-medium">
                   {method.value}
                 </p>
+                {method.secondary && (
+                  <p className="text-gray-300 text-xs mt-1">
+                    {method.secondary}
+                  </p>
+                )}
               </motion.div>
             ))}
           </motion.div>
@@ -114,15 +123,15 @@ const ContactHero = () => {
           >
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-petrozin-gold rounded-full"></div>
-              <span className="text-sm font-medium">24/7 Support Available</span>
+              <span className="text-sm font-medium">10 Min Response Time</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-petrozin-sky rounded-full"></div>
-              <span className="text-sm font-medium">Quick Response Time</span>
+              <span className="text-sm font-medium">Licensed in Qatar</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-petrozin-gold rounded-full"></div>
-              <span className="text-sm font-medium">Expert Consultation</span>
+              <span className="text-sm font-medium">Qualified Staff</span>
             </div>
           </motion.div>
         </motion.div>

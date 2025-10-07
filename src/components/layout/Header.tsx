@@ -31,7 +31,7 @@ const Header = () => {
   const navItems = [
     { name: 'Home', href: '/', hasDropdown: false },
     { name: 'About', href: '/about', hasDropdown: false },
-    { name: 'Services', href: '/services', hasDropdown: true },
+    { name: 'Services', href: '/services', hasDropdown: false },
     { name: 'Contact', href: '/contact', hasDropdown: false },
   ];
 
@@ -44,8 +44,8 @@ const Header = () => {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-petrozin-light-grey/50' 
-          : 'bg-transparent'
+          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50' 
+          : 'bg-white/20 backdrop-blur-sm shadow-sm'
       }`}
       style={{
         opacity: headerOpacity,
@@ -185,7 +185,7 @@ const Header = () => {
                   href={item.href}
                   onClick={() => setIsOpen(false)}
                   aria-current={isActive(item.href) ? 'page' : undefined}
-                  className={`block text-lg font-poppins font-semibold transition-colors duration-300 py-2 ${
+                  className={`block text-base font-poppins font-semibold transition-colors duration-300 py-2 ${
                     isActive(item.href) ? 'text-petrozin-orange' : 'text-petrozin-dark-grey hover:text-petrozin-orange'
                   }`}
                 >
