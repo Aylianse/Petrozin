@@ -105,7 +105,7 @@ const MapSection = () => {
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Our centrally located office in BIN SHEIKH BUILDING provides easy access for clients and partners. 
-                Located above Al Anees Store and just steps from Al Jadeeda Metro Station, we're in the core center of Doha.
+                Located above Al Anees Store and just steps from Al Jadeeda Metro Station, we&apos;re in the core center of Doha.
               </p>
             </motion.div>
 
