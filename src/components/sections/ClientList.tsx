@@ -71,7 +71,7 @@ const ClientList = () => {
         </div>
 
         {/* Stats Section */}
-        <motion.div
+        {/* <motion.div
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ const ClientList = () => {
             <div className="text-3xl md:text-4xl font-bold text-petrozin-gold mb-2">3</div>
             <div className="text-sm text-gray-600">Countries Served</div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Call to Action */}
         <motion.div

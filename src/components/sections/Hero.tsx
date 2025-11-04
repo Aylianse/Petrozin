@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import { ChevronDown, ArrowRight, Users, Globe, Shield, Zap } from 'lucide-react';
+import { ChevronDown, ArrowRight, Shield, Zap, Award, FileCheck, FileText } from 'lucide-react';
 import { useRef } from 'react';
 import AnimatedBackground from '../ui/AnimatedBackground';
 
@@ -193,7 +193,7 @@ const Hero = () => {
 
         {/* Clean CTA Buttons */}
         <motion.div 
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 flex-wrap"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.8 }}
@@ -225,49 +225,77 @@ const Hero = () => {
               </span>
             </motion.button>
           </Link>
+
+          {/* Vendor Registration CTA */}
+          <Link href="/vendor-registration">
+            <motion.button 
+              className="group bg-white/10 backdrop-blur-md border-2 border-white/40 text-white hover:bg-white hover:text-petrozin-navy font-poppins font-semibold px-12 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="flex items-center space-x-3">
+                <FileText className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                <span>VENDOR REGISTRATION</span>
+              </span>
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Clean Trust Indicators */}
         <motion.div
-          className="flex flex-wrap justify-center items-center gap-6"
+          className="flex flex-wrap justify-center items-center gap-4 md:gap-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
         >
-          {/* ISO Badge */}
+          {/* ICV Certificates */}
           <motion.div
-            className="flex items-center space-x-3 bg-white/80 backdrop-blur-md border border-petrozin-orange/30 rounded-full px-4 py-2 shadow-lg"
+            className="flex items-center space-x-2 bg-white/90 backdrop-blur-md border-2 border-petrozin-orange/40 rounded-full px-4 py-2 shadow-lg"
             whileHover={{ scale: 1.05, y: -2 }}
             transition={{ duration: 0.2 }}
           >
             <div className="w-6 h-6 bg-petrozin-orange rounded-full flex items-center justify-center">
               <Shield className="w-3 h-3 text-white" />
             </div>
-            <span className="text-sm font-medium text-petrozin-dark-grey">ISO Certified</span>
+            <span className="text-sm font-semibold text-petrozin-dark-grey">ICV Certificates</span>
           </motion.div>
 
-          {/* Global Network Badge */}
+
+          {/* Manpower Supply License - Highlighted */}
           <motion.div
-            className="flex items-center space-x-3 bg-white/80 backdrop-blur-md border border-petrozin-red/30 rounded-full px-4 py-2 shadow-lg"
+            className="flex items-center space-x-2 bg-gradient-to-r from-petrozin-gold/90 to-petrozin-orange/90 backdrop-blur-md border-2 border-petrozin-gold rounded-full px-4 py-2 shadow-xl relative"
+            whileHover={{ scale: 1.08, y: -2 }}
+            transition={{ duration: 0.2 }}
+          >
+            <motion.div
+              className="absolute inset-0 rounded-full bg-petrozin-gold/20"
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+            <div className="relative z-10 w-7 h-7 bg-white rounded-full flex items-center justify-center">
+              <FileCheck className="w-4 h-4 text-petrozin-gold" />
+            </div>
+            <span className="relative z-10 text-sm font-bold text-white">Manpower Supply License</span>
+          </motion.div>
+
+          
+          {/* ISO Certificates */}
+          <motion.div
+            className="flex items-center space-x-2 bg-white/90 backdrop-blur-md border-2 border-petrozin-orange/40 rounded-full px-4 py-2 shadow-lg"
             whileHover={{ scale: 1.05, y: -2 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="w-6 h-6 bg-petrozin-red rounded-full flex items-center justify-center">
-              <Globe className="w-3 h-3 text-white" />
+            <div className="w-6 h-6 bg-petrozin-orange rounded-full flex items-center justify-center">
+              <Award className="w-3 h-3 text-white" />
             </div>
-            <span className="text-sm font-medium text-petrozin-dark-grey">Global Network</span>
-          </motion.div>
-
-          {/* 24/7 Support Badge */}
-          <motion.div
-            className="flex items-center space-x-3 bg-white/80 backdrop-blur-md border border-petrozin-orange/30 rounded-full px-4 py-2 shadow-lg"
-            whileHover={{ scale: 1.05, y: -2 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="w-6 h-6 bg-gradient-to-r from-petrozin-orange to-petrozin-red rounded-full flex items-center justify-center">
-              <Users className="w-3 h-3 text-white" />
-            </div>
-            <span className="text-sm font-medium text-petrozin-dark-grey">24/7 Support</span>
+            <span className="text-sm font-semibold text-petrozin-dark-grey">ISO Certified</span>
           </motion.div>
         </motion.div>
       </div>

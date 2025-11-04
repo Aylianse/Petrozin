@@ -4,7 +4,7 @@ import Hero from '@/components/sections/Hero';
 import Introduction from '@/components/sections/Introduction';
 import WhyChoosePetrozin from '@/components/sections/WhyChoosePetrozin';
 import OurPromise from '@/components/sections/OurPromise';
-import Testimonials from '@/components/sections/Testimonials';
+import EmployeeReviews from '@/components/sections/EmployeeReviews';
 import CTABanner from '@/components/sections/CTABanner';
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
       <Introduction />
       <WhyChoosePetrozin />
       <OurPromise />
-      <Testimonials />
+      <EmployeeReviews />
       <CTABanner />
       <Footer />
     </main>

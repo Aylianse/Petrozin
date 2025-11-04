@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Flame, Building2, Factory, Zap, ArrowRight } from 'lucide-react';
+import { Flame, Building2, Factory, Zap, ArrowRight, Settings, Coffee } from 'lucide-react';
 
 const IndustrySpecializations = () => {
   const containerVariants = {
@@ -61,6 +61,26 @@ const IndustrySpecializations = () => {
       bgColor: 'bg-yellow-50',
       borderColor: 'border-yellow-200',
     },
+    {
+      id: 'facilities-management',
+      icon: Settings,
+      title: 'Facilities Management',
+      description: 'Comprehensive workforce solutions for building maintenance, property management, security services, and facility operations.',
+      specialties: ['Facility Managers', 'Maintenance Technicians', 'Security Personnel', 'Cleaning Staff'],
+      color: 'from-purple-500 to-indigo-600',
+      bgColor: 'bg-purple-50',
+      borderColor: 'border-purple-200',
+    },
+    {
+      id: 'hospitality',
+      icon: Coffee,
+      title: 'Hospitality',
+      description: 'Skilled professionals for hotels, restaurants, event management, and tourism services with focus on customer excellence.',
+      specialties: ['Hotel Staff', 'Restaurant Personnel', 'Event Coordinators', 'Guest Services'],
+      color: 'from-pink-500 to-rose-600',
+      bgColor: 'bg-pink-50',
+      borderColor: 'border-pink-200',
+    },
   ];
 
   return (
@@ -86,7 +106,7 @@ const IndustrySpecializations = () => {
 
         {/* Industries Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

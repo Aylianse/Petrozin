@@ -112,7 +112,7 @@ const VendorRegistrationForm = () => {
       `Approved By: ${form.approvedBy}\n` +
       `Date: ${form.officialDate}\n`
     );
-    window.location.href = `mailto:admin@petrozin.com?subject=Vendor%20Registration%20Submission&body=${body}`;
+    window.location.href = `mailto:info@petrozin.com?subject=Vendor%20Registration%20Submission&body=${body}`;
   };
 
   return (

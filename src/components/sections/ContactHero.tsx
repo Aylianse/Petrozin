@@ -31,7 +31,7 @@ const ContactHero = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      value: 'admin@petrozin.com',
+      value: 'info@petrozin.com',
       secondary: 'Quick response guaranteed',
       color: 'from-petrozin-sky to-petrozin-sky/80',
     },

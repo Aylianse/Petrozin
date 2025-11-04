@@ -58,7 +58,7 @@ const WhyChoosePetrozin = () => {
       description: 'Access to a worldwide pool of qualified professionals across diverse industries and specializations.',
       color: 'from-petrozin-gold to-petrozin-sky',
       image: '/images/global-talent.jpg',
-      stats: '50+ Countries'
+      stats: '5+ Countries'
     },
     {
       icon: Headphones,
@@ -237,7 +237,7 @@ const WhyChoosePetrozin = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.8, type: "spring" }}
             >
-              50+
+              5+
             </motion.div>
             <div className="text-sm text-gray-600 font-medium">Countries Served</div>
             <Globe className="w-6 h-6 text-petrozin-sky mx-auto mt-2" />

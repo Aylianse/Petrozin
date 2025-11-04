@@ -20,11 +20,11 @@ const AboutHero = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const stats = [
-    { icon: Users, number: '500+', label: 'Projects Completed' },
-    { icon: Award, number: '15+', label: 'Years Experience' },
-    { icon: Target, number: '50+', label: 'Countries Served' },
-  ];
+  // const stats = [
+  //   { icon: Users, number: '500+', label: 'Projects Completed' },
+  //   { icon: Award, number: '15+', label: 'Years Experience' },
+  //   { icon: Target, number: '5+', label: 'Countries Served' },
+  // ];
 
   return (
     <section className="relative pt-32 pb-20 bg-gradient-to-br from-petrozin-navy via-petrozin-navy/90 to-petrozin-navy/80 overflow-hidden">
@@ -60,7 +60,7 @@ const AboutHero = () => {
           </motion.p>
 
           {/* Stats */}
-          <motion.div
+          {/* <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
             variants={itemVariants}
           >
@@ -84,7 +84,7 @@ const AboutHero = () => {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
 
           {/* Trust Indicators */}
           <motion.div

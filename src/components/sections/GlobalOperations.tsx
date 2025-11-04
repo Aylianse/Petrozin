@@ -14,14 +14,14 @@ const GlobalOperations = () => {
     {
       name: 'UAE (Dubai)',
       flag: '🇦🇪',
-      description: 'Regional Operations Center',
+      description: 'Supply & Support Services',
       services: ['Manpower Supply', 'Technical Expertise', 'Recruitment Services'],
     },
     {
-      name: 'Oman',
-      flag: '🇴🇲',
-      description: 'Supply & Support Services',
-      services: ['Workforce Solutions', 'Project Staffing', 'Technical Support'],
+      name: 'Saudi Arabia (KSA)',
+      flag: '🇸🇦',
+      description: 'Regional Operations Center',
+      services: ['Project Staffing', 'Workforce Solutions', 'Onsite Support'],
     },
   ];
 

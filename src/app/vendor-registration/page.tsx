@@ -12,7 +12,7 @@ export default function VendorRegistrationPage() {
   return (
     <main className="min-h-screen">
       <Header />
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white pt-40">
         <div className="container-custom">
           <div className="text-center mb-10">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-poppins font-bold text-petrozin-navy mb-4">

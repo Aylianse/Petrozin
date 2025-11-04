@@ -37,7 +37,7 @@ const ContactForm = () => {
         `Service: ${formData.service}\n` +
         `Message: ${formData.message}\n`
       );
-      window.location.href = `mailto:admin@petrozin.com?subject=Website%20Contact%20Inquiry&body=${body}`;
+      window.location.href = `mailto:info@petrozin.com?subject=Website%20Contact%20Inquiry&body=${body}`;
       setSubmitStatus('success');
       setFormData({ name: '', email: '', company: '', phone: '', service: '', message: '' });
     } catch (error) {
@@ -84,7 +84,7 @@ const ContactForm = () => {
                 Prefer direct contact? Call Landline: <span className="font-semibold">+97444512393</span> or WhatsApp: <span className="font-semibold">+97470820576</span>.
               </p>
               <p>
-                Email us at <a href="mailto:admin@petrozin.com" className="text-petrozin-gold font-medium">admin@petrozin.com</a>.
+                Email us at <a href="mailto:info@petrozin.com" className="text-petrozin-gold font-medium">info@petrozin.com</a>.
               </p>
             </div>
             {/* Success/Error Messages */}

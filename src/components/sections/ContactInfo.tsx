@@ -32,7 +32,7 @@ const ContactInfo = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'admin@petrozin.com',
+      value: 'info@petrozin.com',
       secondary: 'For general inquiries',
       color: 'from-petrozin-sky to-petrozin-sky/80',
       bgColor: 'bg-petrozin-sky/5',
@@ -188,7 +188,7 @@ const ContactInfo = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="text-petrozin-gold" size={24} />
-                <span className="text-xl font-semibold">admin@petrozin.com</span>
+                <span className="text-xl font-semibold">info@petrozin.com</span>
               </div>
             </div>
             <div className="mt-6">

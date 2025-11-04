@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Phone, Mail } from 'lucide-react';
+import { ArrowRight, Phone, Mail, FileText } from 'lucide-react';
 
 const CTABanner = () => {
   const containerVariants = {
@@ -61,7 +61,7 @@ const CTABanner = () => {
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 flex-wrap"
             variants={itemVariants}
           >
             <Link href="/contact">
@@ -73,6 +73,12 @@ const CTABanner = () => {
             <Link href="/services">
               <button className="border-2 border-petrozin-orange text-petrozin-orange hover:bg-petrozin-orange hover:text-white font-poppins font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg backdrop-blur-sm">
                 Explore Services
+              </button>
+            </Link>
+            <Link href="/vendor-registration">
+              <button className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white hover:bg-white hover:text-petrozin-navy font-poppins font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 text-lg flex items-center space-x-2 group">
+                <FileText size={20} className="group-hover:rotate-12 transition-transform duration-300" />
+                <span>Vendor Registration</span>
               </button>
             </Link>
           </motion.div>
@@ -98,7 +104,7 @@ const CTABanner = () => {
               </div>
               <div className="text-left">
                 <p className="text-sm text-gray-300">Email Us</p>
-                <p className="font-semibold">admin@petrozin.com</p>
+                <p className="font-semibold">info@petrozin.com</p>
               </div>
             </div>
           </motion.div>
@@ -109,7 +115,7 @@ const CTABanner = () => {
             variants={itemVariants}
           >
             <p className="text-gray-300 text-sm">
-              Trusted by 500+ companies worldwide • ISO 9001:2015 Certified • 24/7 Support Available
+              Trusted by 50+ companies worldwide • ISO 9001:2015 Certified • 24/7 Support Available
             </p>
           </motion.div>
         </motion.div>

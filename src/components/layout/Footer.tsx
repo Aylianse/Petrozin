@@ -24,6 +24,8 @@ const Footer = () => {
       { name: 'Oil & Gas', href: '/services#oil-gas' },
       { name: 'Construction', href: '/services#construction' },
       { name: 'Manufacturing', href: '/services#manufacturing' },
+      { name: 'Facilities Management', href: '/services#facilities-management' },
+      { name: 'Hospitality', href: '/services#hospitality' },
     ],
   };
 
@@ -90,13 +92,13 @@ const Footer = () => {
                 <span> +97470820576</span>
               </a>
               <a 
-                href="mailto:admin@petrozin.com"
+                href="mailto:info@petrozin.com"
                 className="flex items-center space-x-3 text-sm text-gray-300 hover:text-petrozin-orange transition-colors duration-300 group"
               >
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-petrozin-orange/20 transition-colors">
                   <Mail size={16} />
                 </div>
-                <span>admin@petrozin.com</span>
+                <span>info@petrozin.com</span>
               </a>
               <a 
                 href="https://www.google.com/maps/search/?api=1&query=BIN+SHEIKH+BUILDING+Doha+Qatar"
