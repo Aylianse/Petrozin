@@ -206,7 +206,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <span className="flex items-center space-x-3">
-                <span>START YOUR PROJECT</span>
+                <span>GET STARTED</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
               </span>
             </motion.button>
@@ -257,7 +257,7 @@ const Hero = () => {
             <div className="w-6 h-6 bg-petrozin-orange rounded-full flex items-center justify-center">
               <Shield className="w-3 h-3 text-white" />
             </div>
-            <span className="text-sm font-semibold text-petrozin-dark-grey">ICV Certificates</span>
+            <span className="text-sm font-semibold text-petrozin-dark-grey">ICV Certified</span>
           </motion.div>
 
 

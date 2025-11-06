@@ -42,7 +42,7 @@ const WhyChoosePetrozin = () => {
       description: 'Deep understanding of oil & gas, construction, manufacturing, and energy sectors with proven track records.',
       color: 'from-petrozin-gold to-petrozin-gold/80',
       image: '/images/industry-expertise.jpg',
-      stats: '15+ Years Experience'
+      stats: 'Proven Expertise'
     },
     {
       icon: Shield,
@@ -221,7 +221,7 @@ const WhyChoosePetrozin = () => {
             >
               500+
             </motion.div>
-            <div className="text-sm text-gray-600 font-medium">Projects Completed</div>
+            <div className="text-sm text-gray-600 font-medium">Qualified Staff Deployed</div>
             <TrendingUp className="w-6 h-6 text-petrozin-gold mx-auto mt-2" />
           </motion.div>
           

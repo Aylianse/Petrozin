@@ -112,10 +112,10 @@ const ServicesDetails = () => {
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <span className="inline-flex items-center gap-2 text-sm px-3 py-1 rounded-full bg-petrozin-gray text-petrozin-navy border border-gray-200">
-              <Shield size={16} /> ICV Certificates
+              <Shield size={16} /> ICV Certified
             </span>
             <span className="inline-flex items-center gap-2 text-sm px-3 py-1 rounded-full bg-petrozin-gray text-petrozin-navy border border-gray-200">
-              <Award size={16} /> ISO Certificates
+              <Award size={16} /> ISO Certified
             </span>
             <span className="inline-flex items-center gap-2 text-sm px-3 py-1 rounded-full bg-petrozin-gold/20 text-petrozin-navy border border-petrozin-gold/40 font-semibold">
               <Shield size={16} /> Manpower Supply License (Rare Advantage)

@@ -7,7 +7,7 @@ const LicensesCertifications = () => {
   const items = [
     {
       icon: Shield,
-      title: 'ICV Certificates',
+      title: 'ICV Certified',
       description: 'Committed to local value creation and compliance with In-Country Value requirements.',
       color: 'from-petrozin-gold to-petrozin-gold/80',
       bgColor: 'bg-petrozin-gold/5',
@@ -15,7 +15,7 @@ const LicensesCertifications = () => {
     },
     {
       icon: Award,
-      title: 'ISO Certificates',
+      title: 'ISO Certified',
       description: 'Adhering to international standards for quality, safety, and management systems.',
       color: 'from-petrozin-sky to-petrozin-sky/80',
       bgColor: 'bg-petrozin-sky/5',

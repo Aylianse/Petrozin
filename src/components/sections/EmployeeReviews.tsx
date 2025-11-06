@@ -24,11 +24,11 @@ const EmployeeReviews = () => {
       source: 'Google Reviews',
     },
     {
-      name: 'Janoos Ummer',
+      name: 'zaid sheik',
       role: 'Employee',
       rating: 5,
-      time: '',
-      text: 'Excellent contracting and technical support services company.',
+      time: '2 years ago',
+      text: 'Very good Service. They provide all types of Local Manpower.',
       source: 'Google Reviews',
     },
   ];

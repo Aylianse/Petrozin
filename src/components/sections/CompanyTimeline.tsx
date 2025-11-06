@@ -59,7 +59,7 @@ const CompanyTimeline = () => {
     {
       year: '2024',
       title: 'Industry Leader',
-      description: 'Recognized as a leading manpower solutions provider with 500+ successful projects completed.',
+      description: 'Recognized as a leading manpower solutions provider with many successful projects completed.',
       icon: Users,
       color: 'from-petrozin-sky to-petrozin-sky/80',
     },
