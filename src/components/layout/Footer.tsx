@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Linkedin, Facebook, Instagram, Mail, MapPin } from 'lucide-react';
+import { Linkedin, Facebook, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -30,9 +30,8 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/petrozin', color: 'hover:text-blue-600' },
-    { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/petrozin', color: 'hover:text-blue-600' },
-    { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/petrozin', color: 'hover:text-pink-600' },
+    { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/Qatarshorttermwork', color: 'hover:text-blue-600' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/admin-petrozin-arabia-265336300/', color: 'hover:text-blue-600' },
   ];
 
   const containerVariants = {
@@ -109,7 +108,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-petrozin-orange/20 transition-colors mt-0.5 flex-shrink-0">
                   <MapPin size={16} />
                 </div>
-                <span>BIN SHEIKH BUILDING, 5th Floor, Office 502, Above Al Anees Store, Near Al Jadeeda Metro Station, Doha, Qatar</span>
+                <span>BIN SHEIKH BUILDING, 5th Floor, Office 502, Above Al Anees Store, Near Doha Al Jadeeda Metro Station, Doha, Qatar</span>
               </a>
             </div>
           </motion.div>

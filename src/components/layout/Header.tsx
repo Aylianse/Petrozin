@@ -45,7 +45,7 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50' 
-          : 'bg-white/20 backdrop-blur-sm shadow-sm'
+          : 'bg-white/95 backdrop-blur-sm shadow-sm'
       }`}
       style={{
         opacity: headerOpacity,
@@ -53,7 +53,7 @@ const Header = () => {
         transform: `scale(${headerScale})`,
       }}
     >
-      <div className="container-custom">
+      <div className="px-6 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <motion.div
@@ -71,9 +71,9 @@ const Header = () => {
                 <Image
                   src="/PetrozinLogos/Petrozin-LogoTransparent.png"
                   alt="Petrozin Logo"
-                  width={180}
-                  height={60}
-                  className="h-12 lg:h-16 w-auto object-contain"
+                  width={200}
+                  height={80}
+                  className="h-14 lg:h-18 w-auto object-contain"
                   priority
                 />
               </motion.div>

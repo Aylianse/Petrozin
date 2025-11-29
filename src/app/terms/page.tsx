@@ -196,7 +196,7 @@ export default function TermsOfServicePage() {
                 <div className="bg-petrozin-gray rounded-xl p-6">
                   <p className="text-gray-700 mb-2"><strong>Petrozin Arabia Contracting & Facilities Management LLC</strong></p>
                   <p className="text-gray-700 mb-2">BIN SHEIKH BUILDING, 5th Floor, Office 502</p>
-                  <p className="text-gray-700 mb-2">Above Al Anees Store, Near Al Jadeeda Metro Station</p>
+                  <p className="text-gray-700 mb-2">Above Al Anees Store, Near Doha Al Jadeeda Metro Station</p>
                   <p className="text-gray-700 mb-2">Doha, Qatar</p>
                   <p className="text-gray-700 mb-2">Email: <a href="mailto:info@petrozin.com" className="text-petrozin-gold hover:underline">admin@petrozin.com</a></p>
                   <p className="text-gray-700">Phone: +97444512393</p>

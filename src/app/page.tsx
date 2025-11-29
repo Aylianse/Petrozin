@@ -9,8 +9,9 @@ import CTABanner from '@/components/sections/CTABanner';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
       <Header />
+    <main className="min-h-screen">
       <Hero />
       <Introduction />
       <WhyChoosePetrozin />
@@ -19,5 +20,6 @@ export default function Home() {
       <CTABanner />
       <Footer />
     </main>
+    </>
   );
 }

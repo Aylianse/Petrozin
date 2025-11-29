@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Phone, Mail, FileText } from 'lucide-react';
+import { ArrowRight, Phone, Mail, FileText, Facebook, Linkedin } from 'lucide-react';
 
 const CTABanner = () => {
   const containerVariants = {
@@ -107,6 +107,34 @@ const CTABanner = () => {
                 <p className="font-semibold">info@petrozin.com</p>
               </div>
             </div>
+          </motion.div>
+
+          {/* Social Media Links */}
+          <motion.div
+            className="flex justify-center items-center gap-4 mt-8"
+            variants={itemVariants}
+          >
+            <span className="text-gray-300 text-sm font-medium">Follow Us:</span>
+            <motion.a
+              href="https://www.facebook.com/Qatarshorttermwork"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all duration-300 border border-white/20"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Facebook size={20} />
+            </motion.a>
+            <motion.a
+              href="https://www.linkedin.com/in/admin-petrozin-arabia-265336300/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all duration-300 border border-white/20"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Linkedin size={20} />
+            </motion.a>
           </motion.div>
 
           {/* Trust Indicators */}

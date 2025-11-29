@@ -36,7 +36,7 @@ const MapSection = () => {
             <span className="text-gradient">Office</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Located in the core center of Doha, near Al Jadeeda Metro Station. Our office is easily accessible 
+            Located in the core center of Doha, near Doha Al Jadeeda Metro Station. Our office is easily accessible 
             via public transportation and ready to welcome you for in-person consultations.
           </p>
         </motion.div>
@@ -73,7 +73,7 @@ const MapSection = () => {
               <div className="mt-6 space-y-3">
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 text-petrozin-gold mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-700">BIN SHEIKH BUILDING, 5th Floor, Office 502, Above Al Anees Store, Near Al Jadeeda Metro Station, Doha, Qatar</span>
+                  <span className="text-gray-700">BIN SHEIKH BUILDING, 5th Floor, Office 502, Above Al Anees Store, Near Doha Al Jadeeda Metro Station, Doha, Qatar</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Clock className="w-5 h-5 text-petrozin-sky flex-shrink-0" />
@@ -105,7 +105,7 @@ const MapSection = () => {
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Our centrally located office in BIN SHEIKH BUILDING provides easy access for clients and partners. 
-                Located above Al Anees Store and just steps from Al Jadeeda Metro Station, we&apos;re in the core center of Doha.
+                Located above Al Anees Store and just steps from Doha Al Jadeeda Metro Station, we&apos;re in the core center of Doha.
               </p>
             </motion.div>
 
@@ -147,7 +147,7 @@ const MapSection = () => {
                 <div className="bg-petrozin-gray/50 rounded-xl p-4">
                   <h5 className="font-semibold text-petrozin-navy mb-2">Public Transportation</h5>
                   <p className="text-gray-600 text-sm">
-                    <strong>Al Jadeeda Metro Station</strong> - 2 minutes walk<br />
+                    <strong>Doha Al Jadeeda Metro Station</strong> - 2 minutes walk<br />
                     <strong>Bus Station</strong> - Adjacent to metro<br />
                     Easy access from all parts of Doha
                   </p>

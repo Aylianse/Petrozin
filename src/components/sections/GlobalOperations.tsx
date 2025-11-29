@@ -12,7 +12,7 @@ const GlobalOperations = () => {
       services: ['Temporary Manpower Supply', 'Permanent Staffing', 'Project Support'],
     },
     {
-      name: 'UAE (Dubai)',
+      name: 'UAE',
       flag: '🇦🇪',
       description: 'Supply & Support Services',
       services: ['Manpower Supply', 'Technical Expertise', 'Recruitment Services'],

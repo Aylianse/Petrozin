@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Facebook, Linkedin } from 'lucide-react';
 
 const ContactHero = () => {
   const containerVariants = {
@@ -133,6 +133,34 @@ const ContactHero = () => {
               <div className="w-3 h-3 bg-petrozin-gold rounded-full"></div>
               <span className="text-sm font-medium">Qualified Staff</span>
             </div>
+          </motion.div>
+
+          {/* Social Media Links */}
+          <motion.div
+            className="flex justify-center items-center gap-4 mt-8"
+            variants={itemVariants}
+          >
+            <span className="text-gray-300 text-sm font-medium mr-2">Follow Us:</span>
+            <motion.a
+              href="https://www.facebook.com/Qatarshorttermwork"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all duration-300 border border-white/20"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Facebook size={20} />
+            </motion.a>
+            <motion.a
+              href="https://www.linkedin.com/in/admin-petrozin-arabia-265336300/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all duration-300 border border-white/20"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Linkedin size={20} />
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>

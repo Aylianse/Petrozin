@@ -41,7 +41,7 @@ const ContactInfo = () => {
       icon: MapPin,
       title: 'Office',
       value: 'BIN SHEIKH BUILDING, 5th Floor, Office 502',
-      secondary: 'Above Al Anees Store, Near Al Jadeeda Metro Station, Doha, Qatar',
+      secondary: 'Above Al Anees Store, Near Doha Al Jadeeda Metro Station, Doha, Qatar',
       color: 'from-petrozin-gold to-petrozin-sky',
       bgColor: 'bg-gradient-to-br from-petrozin-gold/5 to-petrozin-sky/5',
     },
@@ -57,7 +57,7 @@ const ContactInfo = () => {
     {
       icon: Globe,
       title: 'Public Transportation',
-      value: 'Near Al Jadeeda Metro Station & Bus Station',
+      value: 'Near Doha Al Jadeeda Metro Station & Bus Station',
       secondary: 'Core center of Doha - Easy to reach',
     },
     {
