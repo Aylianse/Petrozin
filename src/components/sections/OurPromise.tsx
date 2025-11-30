@@ -93,7 +93,7 @@ const OurPromise = () => {
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="text-3xl font-bold text-petrozin-gold mb-1">500+</div>
+                      <div className="text-3xl font-bold text-petrozin-gold mb-1">2000+</div>
                       <div className="text-xs text-gray-300">Staff Deployed</div>
                     </motion.div>
                   </div>

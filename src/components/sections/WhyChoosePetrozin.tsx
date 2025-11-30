@@ -219,7 +219,7 @@ const WhyChoosePetrozin = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.6, type: "spring" }}
             >
-              500+
+              2000+
             </motion.div>
             <div className="text-sm text-gray-600 font-medium">Qualified Staff Deployed</div>
             <TrendingUp className="w-6 h-6 text-petrozin-gold mx-auto mt-2" />

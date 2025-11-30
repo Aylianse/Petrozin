@@ -110,7 +110,7 @@ const Testimonials = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-petrozin-gold mb-2">500+</div>
+              <div className="text-4xl font-bold text-petrozin-gold mb-2">2000+</div>
               <div className="text-gray-300">Qualified Staff Deployed</div>
             </div>
             <div>

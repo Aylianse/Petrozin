@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MapPin, Navigation, Clock, Phone } from 'lucide-react';
+import { MapPin, Clock, Phone } from 'lucide-react';
 
 const MapSection = () => {
   const containerVariants = {
@@ -55,9 +55,9 @@ const MapSection = () => {
               variants={itemVariants}
             >
               <div className="aspect-video rounded-2xl overflow-hidden relative">
-                {/* Google Maps Embed */}
+                {/* Google Maps Embed - Bin Sheikh Building Exact Location */}
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.8!2d51.531!3d25.2854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDE3JzA3LjQiTiA1McKwMzEnNTIuOCJF!5e0!3m2!1sen!2sqa!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.8!2d51.534638!3d25.2817242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45c541b5de4c05%3A0xd6823c761a7592c1!2sBin+Sheikh+Building!5e0!3m2!1sen!2sqa!4v1734567890123!5m2!1sen!2sqa"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -65,7 +65,7 @@ const MapSection = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="w-full h-full"
-                  title="Petrozin Office Location"
+                  title="Petrozin Office Location - Bin Sheikh Building"
                 ></iframe>
               </div>
 

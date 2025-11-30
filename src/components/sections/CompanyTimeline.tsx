@@ -45,7 +45,7 @@ const CompanyTimeline = () => {
     {
       year: '2018',
       title: 'Global Expansion',
-      description: 'Expanded operations to 25+ countries, building a truly global talent network.',
+      description: 'Expanded operations to 5+ countries, building a truly global talent network.',
       icon: Globe,
       color: 'from-petrozin-sky to-petrozin-gold',
     },
