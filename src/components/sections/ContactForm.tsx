@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, FileText } from 'lucide-react';
+import Link from 'next/link';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -28,19 +29,21 @@ const ContactForm = () => {
     setSubmitStatus('idle');
 
     try {
-      const body = encodeURIComponent(
-        `New Website Inquiry\n\n` +
-        `Name: ${formData.name}\n` +
-        `Email: ${formData.email}\n` +
-        `Company: ${formData.company}\n` +
-        `Phone: ${formData.phone}\n` +
-        `Service: ${formData.service}\n` +
-        `Message: ${formData.message}\n`
-      );
-      window.location.href = `mailto:info@petrozin.com?subject=Website%20Contact%20Inquiry&body=${body}`;
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', company: '', phone: '', service: '', message: '' });
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -79,13 +82,23 @@ const ContactForm = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="mb-6 text-center text-gray-700">
+            <div className="mb-6 text-center text-gray-700 space-y-3">
               <p>
-                Prefer direct contact? Call Landline: <span className="font-semibold">+97444512393</span> or WhatsApp: <span className="font-semibold">+97470820576</span>.
+                Prefer direct contact? Call Landline: <span className="font-semibold">+974 44512393</span> or WhatsApp: <span className="font-semibold">+97470820576</span>.
               </p>
               <p>
-                Email us at <a href="mailto:info@petrozin.com" className="text-petrozin-gold font-medium">info@petrozin.com</a>.
+                Email us at <a href="mailto:info@petrozin.com" className="text-petrozin-gold font-medium hover:underline">info@petrozin.com</a>.
               </p>
+              <div className="pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-600 mb-3">Looking to become a vendor?</p>
+                <Link
+                  href="/vendor-registration"
+                  className="inline-flex items-center gap-2 text-petrozin-gold hover:text-petrozin-gold/80 font-semibold transition-colors"
+                >
+                  <FileText size={18} />
+                  Go to Vendor Registration Form
+                </Link>
+              </div>
             </div>
             {/* Success/Error Messages */}
             {submitStatus === 'success' && (
@@ -197,8 +210,12 @@ const ContactForm = () => {
                 >
                   <option value="">Select a service</option>
                   <option value="manpower-supply">Manpower Supply</option>
+                  <option value="recruitment">Recruitment Services</option>
                   <option value="project-support">Project Support</option>
                   <option value="technical-expertise">Technical Expertise</option>
+                  <option value="facilities-management">Facilities Management</option>
+                  <option value="hospitality">Hospitality</option>
+                  <option value="vendor-registration">Vendor Registration</option>
                   <option value="consultation">Consultation</option>
                   <option value="other">Other</option>
                 </select>

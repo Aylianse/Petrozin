@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { MapPin, Clock, Phone } from 'lucide-react';
+import Link from 'next/link';
 
 const MapSection = () => {
   const containerVariants = {
@@ -81,7 +82,7 @@ const MapSection = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-petrozin-gold flex-shrink-0" />
-                  <span className="text-gray-700">+97444512393 | WhatsApp: +97470820576</span>
+                  <span className="text-gray-700">+974 44512393 | WhatsApp: +974 70820576</span>
                 </div>
               </div>
             </motion.div>
@@ -172,9 +173,11 @@ const MapSection = () => {
                 <p className="text-gray-200 mb-4">
                   Prefer to meet in person? Schedule a visit to our office for a comprehensive consultation.
                 </p>
-                <button className="btn-primary">
-                  Book Appointment
-                </button>
+                <Link href="/contact">
+                  <button className="btn-primary">
+                    Book Appointment
+                  </button>
+                </Link>
               </div>
             </motion.div>
           </motion.div>

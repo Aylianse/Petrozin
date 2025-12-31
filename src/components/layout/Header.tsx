@@ -44,8 +44,8 @@ const Header = () => {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50' 
-          : 'bg-white/95 backdrop-blur-sm shadow-sm'
+          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/60' 
+          : 'bg-white/90 backdrop-blur-xl shadow-md border-b border-gray-200/60'
       }`}
       style={{
         opacity: headerOpacity,
@@ -53,8 +53,8 @@ const Header = () => {
         transform: `scale(${headerScale})`,
       }}
     >
-      <div className="px-6 sm:px-6 lg:px-12">
-        <div className="flex items-center justify-between h-20 lg:h-24">
+      <div className="px-4 sm:px-6 lg:px-12">
+        <div className="flex items-center justify-between h-16 lg:h-22">
           {/* Logo */}
           <motion.div
             className="flex items-center"
@@ -71,9 +71,9 @@ const Header = () => {
                 <Image
                   src="/PetrozinLogos/Petrozin-LogoTransparent.png"
                   alt="Petrozin Logo"
-                  width={200}
-                  height={80}
-                  className="h-14 lg:h-18 w-auto object-contain"
+                  width={180}
+                  height={72}
+                  className="h-12 sm:h-14 lg:h-18 w-auto max-w-[150px] sm:max-w-[180px] object-contain"
                   priority
                 />
               </motion.div>
@@ -127,10 +127,11 @@ const Header = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
+            className="hidden lg:block"
           >
             <Link href="/contact">
               <motion.button
-                className="bg-gradient-to-r from-petrozin-orange to-petrozin-red text-white font-poppins font-bold text-base px-6 py-3 rounded-xl hover:from-petrozin-orange/90 hover:to-petrozin-red/90 transition-all duration-300 shadow-lg border-2 border-transparent hover:border-petrozin-orange/30 flex items-center space-x-2 group"
+                className="bg-gradient-to-r from-petrozin-orange to-petrozin-red text-white font-poppins font-bold text-base px-6 py-3 rounded-full hover:from-petrozin-orange/90 hover:to-petrozin-red/90 transition-all duration-300 shadow-lg hover:shadow-xl border border-petrozin-orange/30 flex items-center space-x-2 group"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Flame, Building2, Factory, Zap, ArrowRight, Settings, Coffee } from 'lucide-react';
+import Link from 'next/link';
 
 const IndustrySpecializations = () => {
   const containerVariants = {
@@ -194,10 +195,12 @@ const IndustrySpecializations = () => {
             <p className="text-gray-600 mb-6">
               Our industry specialists are ready to discuss your specific requirements and provide tailored solutions.
             </p>
-            <button className="btn-primary">
-              Schedule Consultation
-              <ArrowRight className="ml-2 inline-block" size={20} />
-            </button>
+            <Link href="/contact">
+              <button className="btn-primary group">
+                Schedule Consultation
+                <ArrowRight className="ml-2 inline-block group-hover:translate-x-1 transition-transform duration-300" size={20} />
+              </button>
+            </Link>
           </div>
         </motion.div>
       </div>

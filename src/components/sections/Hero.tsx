@@ -28,10 +28,12 @@ const Hero = () => {
       {/* Animated Background with Enhanced Fallback */}
       <div className="absolute inset-0 z-0">
         {/* Primary Animated Background */}
-        <AnimatedBackground
-          intensity="medium"
-          color="primary"
-        />
+        <div className="hidden md:block">
+          <AnimatedBackground
+            intensity="medium"
+            color="primary"
+          />
+        </div>
         
         {/* Enhanced Fallback Background */}
         <div className="absolute inset-0">
@@ -53,12 +55,12 @@ const Hero = () => {
         </div>
         
         {/* Clean gradient overlays for better logo visibility */}
-      
+        <div className="absolute inset-0 bg-gradient-to-b from-petrozin-navy/70 via-petrozin-navy/65 to-petrozin-navy/80 md:bg-gradient-to-b md:from-petrozin-navy/60 md:via-petrozin-navy/50 md:to-petrozin-navy/65" />
       </div>
 
       {/* Layered Background with Parallax */}
       <motion.div 
-        className="absolute inset-0"
+        className="absolute inset-0 hidden md:block"
         style={{ y }}
       >
         {/* Sky Layer */}
@@ -156,7 +158,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-20 text-center max-w-6xl mx-auto px-4">
+      <div className="relative z-20 text-center max-w-5xl mx-auto px-4 sm:px-6">
         {/* Funky Typography Headline */}
         <motion.div
           className="mb-8"
@@ -166,7 +168,7 @@ const Hero = () => {
         >
           {/* Main Headline with Funky Style */}
           <motion.h1 
-            className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-poppins font-black text-white mb-4 leading-none tracking-tight drop-shadow-2xl"
+            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-poppins font-black text-white mb-4 leading-tight tracking-tight drop-shadow-2xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -181,7 +183,7 @@ const Hero = () => {
 
           {/* Funky Subtitle */}
           <motion.p
-            className="text-xl sm:text-2xl lg:text-3xl text-white font-inter font-light max-w-3xl mx-auto leading-relaxed drop-shadow-xl"
+            className="text-lg sm:text-xl lg:text-2xl text-white font-inter font-light max-w-3xl mx-auto leading-relaxed drop-shadow-xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
@@ -193,7 +195,7 @@ const Hero = () => {
 
         {/* Clean CTA Buttons */}
         <motion.div 
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 flex-wrap"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16 flex-wrap"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.8 }}
@@ -201,13 +203,13 @@ const Hero = () => {
           {/* Primary CTA */}
           <Link href="/contact">
             <motion.button 
-              className="group bg-gradient-to-r from-petrozin-orange to-petrozin-red text-white font-poppins font-bold text-lg px-12 py-4 rounded-full hover:from-petrozin-orange/90 hover:to-petrozin-red/90 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:scale-105 hover:-translate-y-1"
+              className="group bg-gradient-to-r from-petrozin-orange to-petrozin-red text-white font-poppins font-bold text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-full hover:from-petrozin-orange/90 hover:to-petrozin-red/90 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1 w-full sm:w-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="flex items-center space-x-3">
+              <span className="flex items-center space-x-2">
                 <span>GET STARTED</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
               </span>
             </motion.button>
           </Link>
@@ -215,13 +217,13 @@ const Hero = () => {
           {/* Secondary CTA */}
           <Link href="/services">
             <motion.button 
-              className="group border-2 border-white/30 text-white hover:bg-white hover:text-petrozin-dark-grey font-poppins font-semibold px-12 py-4 rounded-full transition-all duration-300 backdrop-blur-sm hover:border-white transform hover:scale-105 hover:-translate-y-1"
+              className="group border-2 border-white/30 text-white hover:bg-white hover:text-petrozin-dark-grey font-poppins font-semibold text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-300 backdrop-blur-sm hover:border-white transform hover:scale-105 hover:-translate-y-1 w-full sm:w-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="flex items-center space-x-3">
+              <span className="flex items-center space-x-2">
                 <span>EXPLORE SERVICES</span>
-                <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                <Zap className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
               </span>
             </motion.button>
           </Link>
@@ -229,12 +231,12 @@ const Hero = () => {
           {/* Vendor Registration CTA */}
           <Link href="/vendor-registration">
             <motion.button 
-              className="group bg-white/10 backdrop-blur-md border-2 border-white/40 text-white hover:bg-white hover:text-petrozin-navy font-poppins font-semibold px-12 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1"
+              className="group bg-white/10 backdrop-blur-md border-2 border-white/40 text-white hover:bg-white hover:text-petrozin-navy font-poppins font-semibold text-sm sm:text-base px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 w-full sm:w-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="flex items-center space-x-3">
-                <FileText className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+              <span className="flex items-center space-x-2">
+                <FileText className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                 <span>VENDOR REGISTRATION</span>
               </span>
             </motion.button>
@@ -243,27 +245,27 @@ const Hero = () => {
 
         {/* Clean Trust Indicators */}
         <motion.div
-          className="flex flex-wrap justify-center items-center gap-4 md:gap-6"
+          className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 px-2"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
         >
           {/* ICV Certificates */}
           <motion.div
-            className="flex items-center space-x-2 bg-white/90 backdrop-blur-md border-2 border-petrozin-orange/40 rounded-full px-4 py-2 shadow-lg"
+            className="flex items-center space-x-2 bg-white/90 backdrop-blur-md border-2 border-petrozin-orange/40 rounded-full px-3 sm:px-4 py-2 shadow-lg"
             whileHover={{ scale: 1.05, y: -2 }}
             transition={{ duration: 0.2 }}
           >
             <div className="w-6 h-6 bg-petrozin-orange rounded-full flex items-center justify-center">
               <Shield className="w-3 h-3 text-white" />
             </div>
-            <span className="text-sm font-semibold text-petrozin-dark-grey">ICV Certified</span>
+            <span className="text-xs sm:text-sm font-semibold text-petrozin-dark-grey">ICV Certified</span>
           </motion.div>
 
 
           {/* Manpower Supply License - Highlighted */}
           <motion.div
-            className="flex items-center space-x-2 bg-gradient-to-r from-petrozin-gold/90 to-petrozin-orange/90 backdrop-blur-md border-2 border-petrozin-gold rounded-full px-4 py-2 shadow-xl relative"
+            className="flex items-center space-x-2 bg-gradient-to-r from-petrozin-gold/90 to-petrozin-orange/90 backdrop-blur-md border-2 border-petrozin-gold rounded-full px-3 sm:px-4 py-2 shadow-xl relative"
             whileHover={{ scale: 1.08, y: -2 }}
             transition={{ duration: 0.2 }}
           >
@@ -282,20 +284,20 @@ const Hero = () => {
             <div className="relative z-10 w-7 h-7 bg-white rounded-full flex items-center justify-center">
               <FileCheck className="w-4 h-4 text-petrozin-gold" />
             </div>
-            <span className="relative z-10 text-sm font-bold text-white">Manpower Supply License</span>
+            <span className="relative z-10 text-xs sm:text-sm font-bold text-white">Manpower Supply License</span>
           </motion.div>
 
           
           {/* ISO Certificates */}
           <motion.div
-            className="flex items-center space-x-2 bg-white/90 backdrop-blur-md border-2 border-petrozin-orange/40 rounded-full px-4 py-2 shadow-lg"
+            className="flex items-center space-x-2 bg-white/90 backdrop-blur-md border-2 border-petrozin-orange/40 rounded-full px-3 sm:px-4 py-2 shadow-lg"
             whileHover={{ scale: 1.05, y: -2 }}
             transition={{ duration: 0.2 }}
           >
             <div className="w-6 h-6 bg-petrozin-orange rounded-full flex items-center justify-center">
               <Award className="w-3 h-3 text-white" />
             </div>
-            <span className="text-sm font-semibold text-petrozin-dark-grey">ISO Certified</span>
+            <span className="text-xs sm:text-sm font-semibold text-petrozin-dark-grey">ISO Certified</span>
           </motion.div>
         </motion.div>
       </div>
