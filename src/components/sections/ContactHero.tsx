@@ -24,8 +24,8 @@ const ContactHero = () => {
     {
       icon: Phone,
       title: 'Call Us',
-      value: 'Landline: +97444512393',
-      secondary: 'WhatsApp: +97470820576',
+      value: 'Landline: +974 44512393',
+      secondary: 'WhatsApp: +974 70820576',
       color: 'from-petrozin-gold to-petrozin-gold/80',
     },
     {

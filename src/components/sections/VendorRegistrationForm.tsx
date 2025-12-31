@@ -1,9 +1,13 @@
 'use client';
 
-import { Send } from 'lucide-react';
+import { Send, MessageCircle, CheckCircle, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const VendorRegistrationForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [form, setForm] = useState({
     applicationNo: '',
     companyName: '',
@@ -63,60 +67,107 @@ const VendorRegistrationForm = () => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body = encodeURIComponent(
-      `Vendor Registration Submission\n\n` +
-      `Application No.: ${form.applicationNo}\n` +
-      `Company Name: ${form.companyName}\n` +
-      `Address Line 1: ${form.addressLine1}\n` +
-      `Address Line 2: ${form.addressLine2}\n` +
-      `Telephone: ${form.telephone} Extn: ${form.extn}\n` +
-      `Mobile: ${form.mobile}\n` +
-      `Fax: ${form.fax}\n` +
-      `Email: ${form.contactEmail}\n` +
-      `Web Address: ${form.webAddress}\n` +
-      `Contact Person: ${form.contactPerson}\n` +
-      `Position: ${form.position}\n` +
-      `Name of Sponsor: ${form.sponsor}\n` +
-      `C.R.#: ${form.crNumber}\n` +
-      `Office Location: ${form.officeLocation}\n` +
-      `Street Name: ${form.streetName}\n` +
-      `Building No.: ${form.buildingNo}\n` +
-      `Floor #: ${form.floorNo}\n` +
-      `No. of Employees: ${form.employees}\n` +
-      `Key Person: ${form.keyPerson}\n` +
-      `Specializing: ${form.specializing}\n\n` +
-      `Services & Operations\n` +
-      `Delivery: ${form.delivery}\n` +
-      `Maintenance: ${form.maintenance}\n` +
-      `Guarantee: ${form.guarantee}\n` +
-      `Payment Mode: ${form.paymentMode}\n\n` +
-      `Bank Information\n` +
-      `Bank Name 1: ${form.bankName}\n` +
-      `Branch: ${form.bankBranch}\n` +
-      `A/C No.: ${form.bankAccount}\n` +
-      `Swift Code: ${form.bankSwift}\n` +
-      `Bank Name 2: ${form.bankName2}\n` +
-      `Branch 2: ${form.bankBranch2}\n` +
-      `A/C No. 2: ${form.bankAccount2}\n` +
-      `Swift Code 2: ${form.bankSwift2}\n\n` +
-      `Authorization\n` +
-      `Authorized Signature: ${form.authorizedSignature}\n` +
-      `Company Seal: ${form.companySeal}\n` +
-      `Date: ${form.authDate}\n\n` +
-      `For Petrozin Official Use Only\n` +
-      `Name of the Company: ${form.officialCompanyName}\n` +
-      `Vendor Code: ${form.vendorCode}\n` +
-      `Category: ${form.category}\n` +
-      `Approved By: ${form.approvedBy}\n` +
-      `Date: ${form.officialDate}\n`
-    );
-    window.location.href = `mailto:info@petrozin.com?subject=Vendor%20Registration%20Submission&body=${body}`;
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/vendor-registration', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit vendor registration');
+      }
+
+      setSubmitStatus('success');
+      // Reset form after successful submission
+      setForm({
+        applicationNo: '',
+        companyName: '',
+        addressLine1: '',
+        addressLine2: '',
+        telephone: '',
+        extn: '',
+        mobile: '',
+        fax: '',
+        contactEmail: '',
+        webAddress: '',
+        contactPerson: '',
+        position: '',
+        sponsor: '',
+        crNumber: '',
+        officeLocation: '',
+        streetName: '',
+        buildingNo: '',
+        floorNo: '',
+        employees: '',
+        keyPerson: '',
+        specializing: '',
+        delivery: '',
+        maintenance: '',
+        guarantee: '',
+        paymentMode: '',
+        bankName: '',
+        bankBranch: '',
+        bankAccount: '',
+        bankSwift: '',
+        bankName2: '',
+        bankBranch2: '',
+        bankAccount2: '',
+        bankSwift2: '',
+        authorizedSignature: '',
+        companySeal: '',
+        authDate: '',
+        officialCompanyName: '',
+        vendorCode: '',
+        category: '',
+        approvedBy: '',
+        officialDate: '',
+      });
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="max-w-5xl mx-auto bg-white rounded-2xl p-6 md:p-8 border border-gray-200 shadow-sm">
+      {/* Success/Error Messages */}
+      {submitStatus === 'success' && (
+        <motion.div
+          className="mb-8 p-6 bg-green-50 border border-green-200 rounded-2xl flex items-center space-x-3"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+        >
+          <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+          <div>
+            <h3 className="font-semibold text-green-800">Vendor Registration Submitted Successfully!</h3>
+            <p className="text-green-700">Thank you for your submission. We&apos;ll review your application and get back to you soon.</p>
+          </div>
+        </motion.div>
+      )}
+
+      {submitStatus === 'error' && (
+        <motion.div
+          className="mb-8 p-6 bg-red-50 border border-red-200 rounded-2xl flex items-center space-x-3"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+        >
+          <AlertCircle className="w-6 h-6 text-red-600 flex-shrink-0" />
+          <div>
+            <h3 className="font-semibold text-red-800">Submission Failed</h3>
+            <p className="text-red-700">Please try again or contact us directly via phone or email.</p>
+          </div>
+        </motion.div>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Company Header */}
         <div className={sectionCard}>
@@ -338,10 +389,42 @@ const VendorRegistrationForm = () => {
           </div>
         </div>
 
-        <div className="pt-2">
-          <button type="submit" className="inline-flex items-center gap-2 bg-gradient-to-r from-petrozin-orange to-petrozin-red text-white font-poppins font-bold px-6 py-3 rounded-xl">
-            <Send size={18} /> Submit via Email
-          </button>
+        <div className="pt-2 space-y-4">
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+            <button
+              type="submit"
+              disabled={isSubmitting || !form.companyName || !form.contactEmail}
+              className={`inline-flex items-center gap-2 bg-gradient-to-r from-petrozin-orange to-petrozin-red text-white font-poppins font-bold px-6 py-3 rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+                isSubmitting ? 'cursor-wait' : ''
+              }`}
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <span>Submitting...</span>
+                </>
+              ) : (
+                <>
+                  <Send size={18} /> Submit Registration
+                </>
+              )}
+            </button>
+            <div className="text-center sm:text-right">
+              <p className="text-sm text-gray-600 mb-2">Have a general inquiry?</p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-petrozin-gold hover:text-petrozin-gold/80 font-semibold transition-colors"
+              >
+                <MessageCircle size={18} />
+                Go to Contact Form
+              </Link>
+            </div>
+          </div>
+          <div className="pt-4 border-t border-gray-200">
+            <p className="text-xs text-gray-500 text-center">
+              Need help? Contact us at <a href="mailto:info@petrozin.com" className="text-petrozin-gold hover:underline">info@petrozin.com</a> or call <a href="tel:+97444512393" className="text-petrozin-gold hover:underline">+974 44512393</a>
+            </p>
+          </div>
         </div>
       </form>
     </div>
