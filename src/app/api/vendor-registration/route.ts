@@ -1,16 +1,84 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Server-side validation patterns (mirror client-side)
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const PHONE_PATTERN = /^[+]?[\d\s()-]{7,20}$/;
+const GIBBERISH_PATTERN = /(.)\1{3,}/;
+const KEYBOARD_MASH_PATTERN = /(?:asdf|qwert|zxcv|1234|aaaa|abcd|jkl;)/i;
+const MIN_FORM_TIME_MS = 5000; // 5 seconds — must match client
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    // Validate required fields
-    if (!body.companyName || !body.contactEmail) {
+    // ── Anti-bot checks ──────────────────────────────────────────
+    // 1. Honeypot: if the hidden field was filled, it's a bot
+    if (body._hp) {
+      // Return 200 so bot thinks it succeeded — don't send email
       return NextResponse.json(
-        { error: 'Company name and email are required' },
+        { message: 'Vendor registration submitted successfully' },
+        { status: 200 }
+      );
+    }
+
+    // 2. Timing check: bots fill forms instantly
+    if (typeof body._ft === 'number' && body._ft < MIN_FORM_TIME_MS) {
+      return NextResponse.json(
+        { error: 'Submission rejected. Please take your time filling out the form.' },
+        { status: 429 }
+      );
+    }
+
+    // Strip anti-bot metadata from the payload before further processing
+    const { _hp, _ft, ...formData } = body;
+
+    // ── Validate required fields ─────────────────────────────────
+    const requiredFields = [
+      { key: 'companyName', label: 'Company name' },
+      { key: 'contactEmail', label: 'Email address' },
+      { key: 'crNumber', label: 'C.R. number' },
+      { key: 'addressLine1', label: 'Address' },
+      { key: 'mobile', label: 'Mobile number' },
+      { key: 'contactPerson', label: 'Contact person' },
+    ];
+
+    const missingFields = requiredFields
+      .filter(f => !formData[f.key]?.trim())
+      .map(f => f.label);
+
+    if (missingFields.length > 0) {
+      return NextResponse.json(
+        { error: `Missing required fields: ${missingFields.join(', ')}` },
         { status: 400 }
       );
+    }
+
+    // ── Format validation ────────────────────────────────────────
+    if (!EMAIL_PATTERN.test(formData.contactEmail.trim())) {
+      return NextResponse.json(
+        { error: 'Invalid email address format' },
+        { status: 400 }
+      );
+    }
+
+    if (!PHONE_PATTERN.test(formData.mobile.trim())) {
+      return NextResponse.json(
+        { error: 'Invalid mobile number format' },
+        { status: 400 }
+      );
+    }
+
+    // Check for gibberish in key fields
+    const fieldsToCheckGibberish = ['companyName', 'contactPerson', 'addressLine1'];
+    for (const fieldName of fieldsToCheckGibberish) {
+      const val = formData[fieldName]?.trim() || '';
+      if (val && (GIBBERISH_PATTERN.test(val) || KEYBOARD_MASH_PATTERN.test(val))) {
+        return NextResponse.json(
+          { error: `Invalid value in ${fieldName}. Please enter meaningful information.` },
+          { status: 400 }
+        );
+      }
     }
 
     // Validate email configuration
@@ -54,8 +122,8 @@ export async function POST(request: NextRequest) {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_RECIPIENT || 'info@petrozin.com',
-      replyTo: body.contactEmail,
-      subject: `Vendor Registration Submission - ${body.companyName}`,
+      replyTo: formData.contactEmail,
+      subject: `Vendor Registration Submission - ${formData.companyName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto;">
           <h2 style="color: #1C2833; border-bottom: 3px solid #E67E22; padding-bottom: 10px;">
@@ -65,88 +133,88 @@ export async function POST(request: NextRequest) {
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 20px;">
             <h3 style="color: #E67E22; margin-top: 0;">Company Information</h3>
             <table style="width: 100%; border-collapse: collapse;">
-              ${formatField('Application No.', body.applicationNo)}
-              ${formatField('Company Name', body.companyName)}
-              ${formatField('C.R. #', body.crNumber)}
-              ${formatField('Address Line 1', body.addressLine1)}
-              ${formatField('Address Line 2', body.addressLine2)}
+              ${formatField('Application No.', formData.applicationNo)}
+              ${formatField('Company Name', formData.companyName)}
+              ${formatField('C.R. #', formData.crNumber)}
+              ${formatField('Address Line 1', formData.addressLine1)}
+              ${formatField('Address Line 2', formData.addressLine2)}
             </table>
           </div>
 
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 15px;">
             <h3 style="color: #E67E22; margin-top: 0;">Contact Information</h3>
             <table style="width: 100%; border-collapse: collapse;">
-              ${formatField('Telephone', body.telephone)}
-              ${formatField('Extension', body.extn)}
-              ${formatField('Mobile', body.mobile)}
-              ${formatField('Fax', body.fax)}
-              ${formatField('Email', body.contactEmail)}
-              ${formatField('Web Address', body.webAddress)}
-              ${formatField('Contact Person', body.contactPerson)}
-              ${formatField('Position', body.position)}
+              ${formatField('Telephone', formData.telephone)}
+              ${formatField('Extension', formData.extn)}
+              ${formatField('Mobile', formData.mobile)}
+              ${formatField('Fax', formData.fax)}
+              ${formatField('Email', formData.contactEmail)}
+              ${formatField('Web Address', formData.webAddress)}
+              ${formatField('Contact Person', formData.contactPerson)}
+              ${formatField('Position', formData.position)}
             </table>
           </div>
 
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 15px;">
-            <h3 style="color: #E67E22; margin-top: 0;">Registration & Sponsorship</h3>
+            <h3 style="color: #E67E22; margin-top: 0;">Registration &amp; Sponsorship</h3>
             <table style="width: 100%; border-collapse: collapse;">
-              ${formatField('Sponsor', body.sponsor)}
-              ${formatField('No. of Employees', body.employees)}
+              ${formatField('Sponsor', formData.sponsor)}
+              ${formatField('No. of Employees', formData.employees)}
             </table>
           </div>
 
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 15px;">
             <h3 style="color: #E67E22; margin-top: 0;">Office Location</h3>
             <table style="width: 100%; border-collapse: collapse;">
-              ${formatField('Location', body.officeLocation)}
-              ${formatField('Street Name', body.streetName)}
-              ${formatField('Building No.', body.buildingNo)}
-              ${formatField('Floor #', body.floorNo)}
+              ${formatField('Location', formData.officeLocation)}
+              ${formatField('Street Name', formData.streetName)}
+              ${formatField('Building No.', formData.buildingNo)}
+              ${formatField('Floor #', formData.floorNo)}
             </table>
           </div>
 
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 15px;">
-            <h3 style="color: #E67E22; margin-top: 0;">Services & Operations</h3>
+            <h3 style="color: #E67E22; margin-top: 0;">Services &amp; Operations</h3>
             <table style="width: 100%; border-collapse: collapse;">
-              ${formatField('Delivery', body.delivery)}
-              ${formatField('Maintenance', body.maintenance)}
-              ${formatField('Guarantee', body.guarantee)}
-              ${formatField('Payment Mode', body.paymentMode)}
+              ${formatField('Delivery', formData.delivery)}
+              ${formatField('Maintenance', formData.maintenance)}
+              ${formatField('Guarantee', formData.guarantee)}
+              ${formatField('Payment Mode', formData.paymentMode)}
             </table>
           </div>
 
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 15px;">
             <h3 style="color: #E67E22; margin-top: 0;">Bank Information</h3>
             <table style="width: 100%; border-collapse: collapse;">
-              ${formatField('Bank Name 1', body.bankName)}
-              ${formatField('Branch 1', body.bankBranch)}
-              ${formatField('A/C No. 1', body.bankAccount)}
-              ${formatField('Swift Code 1', body.bankSwift)}
-              ${formatField('Bank Name 2', body.bankName2)}
-              ${formatField('Branch 2', body.bankBranch2)}
-              ${formatField('A/C No. 2', body.bankAccount2)}
-              ${formatField('Swift Code 2', body.bankSwift2)}
+              ${formatField('Bank Name 1', formData.bankName)}
+              ${formatField('Branch 1', formData.bankBranch)}
+              ${formatField('A/C No. 1', formData.bankAccount)}
+              ${formatField('Swift Code 1', formData.bankSwift)}
+              ${formatField('Bank Name 2', formData.bankName2)}
+              ${formatField('Branch 2', formData.bankBranch2)}
+              ${formatField('A/C No. 2', formData.bankAccount2)}
+              ${formatField('Swift Code 2', formData.bankSwift2)}
             </table>
           </div>
 
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 15px;">
             <h3 style="color: #E67E22; margin-top: 0;">Authorization</h3>
             <table style="width: 100%; border-collapse: collapse;">
-              ${formatField('Authorized Signature', body.authorizedSignature)}
-              ${formatField('Company Seal', body.companySeal)}
-              ${formatField('Date', body.authDate)}
+              ${formatField('Authorized Signature', formData.authorizedSignature)}
+              ${formatField('Company Seal', formData.companySeal)}
+              ${formatField('Date', formData.authDate)}
             </table>
           </div>
 
-          ${body.officialCompanyName || body.vendorCode || body.category || body.approvedBy || body.officialDate ? `
+          ${formData.officialCompanyName || formData.vendorCode || formData.category || formData.approvedBy || formData.officialDate ? `
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-top: 15px;">
             <h3 style="color: #E67E22; margin-top: 0;">For Petrozin Official Use Only</h3>
             <table style="width: 100%; border-collapse: collapse;">
-              ${formatField('Company Name', body.officialCompanyName)}
-              ${formatField('Vendor Code', body.vendorCode)}
-              ${formatField('Category', body.category)}
-              ${formatField('Approved By', body.approvedBy)}
-              ${formatField('Date', body.officialDate)}
+              ${formatField('Company Name', formData.officialCompanyName)}
+              ${formatField('Vendor Code', formData.vendorCode)}
+              ${formatField('Category', formData.category)}
+              ${formatField('Approved By', formData.approvedBy)}
+              ${formatField('Date', formData.officialDate)}
             </table>
           </div>
           ` : ''}
@@ -154,7 +222,7 @@ export async function POST(request: NextRequest) {
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 12px;">
             <p><strong>Note:</strong> Please ensure all required documents (C.R. copies, licenses) are attached when responding to this vendor registration.</p>
             <p>This email was sent from the Petrozin website vendor registration form.</p>
-            <p>You can reply directly to this email to respond to ${body.contactPerson || body.companyName}.</p>
+            <p>You can reply directly to this email to respond to ${formData.contactPerson || formData.companyName}.</p>
           </div>
         </div>
       `,
@@ -162,63 +230,64 @@ export async function POST(request: NextRequest) {
 Vendor Registration Submission
 
 Company Information:
-Application No.: ${body.applicationNo || 'N/A'}
-Company Name: ${body.companyName}
-C.R. #: ${body.crNumber || 'N/A'}
-Address Line 1: ${body.addressLine1 || 'N/A'}
-Address Line 2: ${body.addressLine2 || 'N/A'}
+Application No.: ${formData.applicationNo || 'N/A'}
+Company Name: ${formData.companyName}
+C.R. #: ${formData.crNumber || 'N/A'}
+Address Line 1: ${formData.addressLine1 || 'N/A'}
+Address Line 2: ${formData.addressLine2 || 'N/A'}
 
 Contact Information:
-Telephone: ${body.telephone || 'N/A'} Extn: ${body.extn || 'N/A'}
-Mobile: ${body.mobile || 'N/A'}
-Fax: ${body.fax || 'N/A'}
-Email: ${body.contactEmail}
-Web Address: ${body.webAddress || 'N/A'}
-Contact Person: ${body.contactPerson || 'N/A'}
-Position: ${body.position || 'N/A'}
+Telephone: ${formData.telephone || 'N/A'} Extn: ${formData.extn || 'N/A'}
+Mobile: ${formData.mobile || 'N/A'}
+Fax: ${formData.fax || 'N/A'}
+Email: ${formData.contactEmail}
+Web Address: ${formData.webAddress || 'N/A'}
+Contact Person: ${formData.contactPerson || 'N/A'}
+Position: ${formData.position || 'N/A'}
 
 Registration & Sponsorship:
-Sponsor: ${body.sponsor || 'N/A'}
-No. of Employees: ${body.employees || 'N/A'}
+Sponsor: ${formData.sponsor || 'N/A'}
+No. of Employees: ${formData.employees || 'N/A'}
 
 Office Location:
-Location: ${body.officeLocation || 'N/A'}
-Street Name: ${body.streetName || 'N/A'}
-Building No.: ${body.buildingNo || 'N/A'}
-Floor #: ${body.floorNo || 'N/A'}
+Location: ${formData.officeLocation || 'N/A'}
+Street Name: ${formData.streetName || 'N/A'}
+Building No.: ${formData.buildingNo || 'N/A'}
+Floor #: ${formData.floorNo || 'N/A'}
 
 Services & Operations:
-Delivery: ${body.delivery || 'N/A'}
-Maintenance: ${body.maintenance || 'N/A'}
-Guarantee: ${body.guarantee || 'N/A'}
-Payment Mode: ${body.paymentMode || 'N/A'}
+Delivery: ${formData.delivery || 'N/A'}
+Maintenance: ${formData.maintenance || 'N/A'}
+Guarantee: ${formData.guarantee || 'N/A'}
+Payment Mode: ${formData.paymentMode || 'N/A'}
 
 Bank Information:
-Bank Name 1: ${body.bankName || 'N/A'}
-Branch 1: ${body.bankBranch || 'N/A'}
-A/C No. 1: ${body.bankAccount || 'N/A'}
-Swift Code 1: ${body.bankSwift || 'N/A'}
-Bank Name 2: ${body.bankName2 || 'N/A'}
-Branch 2: ${body.bankBranch2 || 'N/A'}
-A/C No. 2: ${body.bankAccount2 || 'N/A'}
-Swift Code 2: ${body.bankSwift2 || 'N/A'}
+Bank Name 1: ${formData.bankName || 'N/A'}
+Branch 1: ${formData.bankBranch || 'N/A'}
+A/C No. 1: ${formData.bankAccount || 'N/A'}
+Swift Code 1: ${formData.bankSwift || 'N/A'}
+Bank Name 2: ${formData.bankName2 || 'N/A'}
+Branch 2: ${formData.bankBranch2 || 'N/A'}
+A/C No. 2: ${formData.bankAccount2 || 'N/A'}
+Swift Code 2: ${formData.bankSwift2 || 'N/A'}
 
 Authorization:
-Authorized Signature: ${body.authorizedSignature || 'N/A'}
-Company Seal: ${body.companySeal || 'N/A'}
-Date: ${body.authDate || 'N/A'}
+Authorized Signature: ${formData.authorizedSignature || 'N/A'}
+Company Seal: ${formData.companySeal || 'N/A'}
+Date: ${formData.authDate || 'N/A'}
 
 For Petrozin Official Use Only:
-Company Name: ${body.officialCompanyName || 'N/A'}
-Vendor Code: ${body.vendorCode || 'N/A'}
-Category: ${body.category || 'N/A'}
-Approved By: ${body.approvedBy || 'N/A'}
-Date: ${body.officialDate || 'N/A'}
+Company Name: ${formData.officialCompanyName || 'N/A'}
+Vendor Code: ${formData.vendorCode || 'N/A'}
+Category: ${formData.category || 'N/A'}
+Approved By: ${formData.approvedBy || 'N/A'}
+Date: ${formData.officialDate || 'N/A'}
 
 ---
 This email was sent from the Petrozin website vendor registration form.
       `,
     };
+
 
     // Send email
     await transporter.sendMail(mailOptions);
